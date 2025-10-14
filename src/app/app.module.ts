@@ -12,6 +12,7 @@ import { SkillsComponent } from './pages/skills/skills.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { AchievementsComponent } from './pages/achievements/achievements.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ThreeSceneComponent } from './three-scene/three-scene.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     SkillsComponent,
     ProjectsComponent,
     AchievementsComponent,
-    ContactComponent
+    ContactComponent,
+    ThreeSceneComponent
   ],
   imports: [
     BrowserModule,
