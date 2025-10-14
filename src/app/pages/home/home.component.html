@@ -1,25 +1,53 @@
-<section class="grid lg:grid-cols-2 gap-12 items-center">
-  <div class="space-y-8">
-    <div class="space-y-4">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-        Full‑Stack Developer specializing in 
-        <span class="text-brand">Angular</span> and 
+<section
+  class="relative overflow-hidden grid lg:grid-cols-2 gap-12 items-center py-16 px-4 md:px-8"
+>
+  <!-- 3D Background Canvas -->
+  <canvas
+    #bgCanvas
+    class="absolute top-0 w-[1000px] h-[1000px] pointer-events-none"
+  ></canvas>
+
+  <!-- Hero Content -->
+  <div class="space-y-8 z-10 lg:col-span-1">
+    <div class="space-y-4 max-w-xl">
+      <h1
+        class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
+      >
+        Full-Stack Developer specializing in
+        <span class="text-brand">Angular</span> and
         <span class="text-brand">Node.js</span>
       </h1>
       <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-        Enthusiastic Computer Science undergrad (CSE'26) with strong foundations in Data Structures, 
-        Algorithms, and OOP. Building efficient, scalable web applications with Angular, Node.js, and Express.
+        Enthusiastic Computer Science undergrad (CSE’26) with strong foundations
+        in Data Structures, Algorithms, and OOP. Building efficient, scalable
+        web applications with Angular, Node.js, and Express.
       </p>
     </div>
 
     <div class="flex flex-wrap gap-4">
-      <a routerLink="/projects" class="inline-flex items-center px-6 py-3 bg-brand text-white font-medium rounded-lg hover:bg-brand-dark transition-colors">
+      <a
+        routerLink="/projects"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-brand text-white font-medium rounded-lg hover:bg-brand-dark transition"
+      >
         View Projects
-        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
         </svg>
       </a>
-      <a routerLink="/contact" class="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-700 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+      <a
+        routerLink="/contact"
+        class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition"
+      >
         Get in Touch
       </a>
     </div>
@@ -27,48 +55,78 @@
     <div class="pt-4">
       <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Tech Stack</p>
       <div class="flex flex-wrap gap-2">
-        <span *ngFor="let skill of skills" class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-          {{skill}}
+        <span
+          *ngFor="let skill of skills"
+          class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+        >
+          {{ skill }}
         </span>
       </div>
     </div>
   </div>
 
-  <div class="order-first lg:order-last">
-    <div class="rounded-2xl border border-gray-200 dark:border-gray-800 p-8 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Education</div>
-          <div class="font-semibold text-gray-900 dark:text-gray-100">B.Tech, Computer Engineering</div>
+  <!-- Stats Section -->
+  <div class="order-first lg:order-last z-10 lg:col-span-1">
+    <div
+      class="rounded-2xl border border-gray-200 dark:border-gray-800 p-8 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900"
+    >
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div
+          class="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700"
+        >
+          <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+            Education
+          </div>
+          <div class="font-semibold text-gray-900 dark:text-gray-100">
+            B.Tech, Computer Engineering
+          </div>
           <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            Rajarambapu Institute of Technology<br>
+            Rajarambapu Institute of Technology<br />
             2022–2026 • GPA 7.80
           </div>
         </div>
 
-        <div class="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Current Role</div>
-          <div class="font-semibold text-gray-900 dark:text-gray-100">Software Developer Intern</div>
+        <div
+          class="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700"
+        >
+          <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+            Current Role
+          </div>
+          <div class="font-semibold text-gray-900 dark:text-gray-100">
+            Software Developer Intern
+          </div>
           <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            GTT Data Solutions<br>
+            GTT Data Solutions<br />
             June 2025 – Present
           </div>
         </div>
 
-        <div class="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Achievement</div>
-          <div class="font-semibold text-gray-900 dark:text-gray-100">Top 15 Hackathon</div>
+        <div
+          class="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700"
+        >
+          <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+            Achievement
+          </div>
+          <div class="font-semibold text-gray-900 dark:text-gray-100">
+            Top 15 Hackathon
+          </div>
           <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            Among 5000+ students<br>
+            Among 5000+ students<br />
             GTT Hackathon Winner
           </div>
         </div>
 
-        <div class="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Open Source</div>
-          <div class="font-semibold text-gray-900 dark:text-gray-100">motivator-cli</div>
+        <div
+          class="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-sm border border-gray-100 dark:border-gray-700"
+        >
+          <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">
+            Open Source
+          </div>
+          <div class="font-semibold text-gray-900 dark:text-gray-100">
+            motivator-cli
+          </div>
           <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
-            300+ downloads<br>
+            300+ downloads<br />
             NPM Package
           </div>
         </div>
@@ -77,22 +135,23 @@
   </div>
 </section>
 
-<!-- Quick Stats Section -->
-<section class="mt-20">
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-    <div class="text-center">
+<section class="mt-20 px-4 md:px-8">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div>
       <div class="text-3xl font-bold text-brand">7.80</div>
       <div class="text-sm text-gray-500 dark:text-gray-400">CGPA</div>
     </div>
-    <div class="text-center">
+    <div>
       <div class="text-3xl font-bold text-brand">50+</div>
-      <div class="text-sm text-gray-500 dark:text-gray-400">Problems Solved</div>
+      <div class="text-sm text-gray-500 dark:text-gray-400">
+        Problems Solved
+      </div>
     </div>
-    <div class="text-center">
+    <div>
       <div class="text-3xl font-bold text-brand">300+</div>
       <div class="text-sm text-gray-500 dark:text-gray-400">CLI Downloads</div>
     </div>
-    <div class="text-center">
+    <div>
       <div class="text-3xl font-bold text-brand">Top 15</div>
       <div class="text-sm text-gray-500 dark:text-gray-400">Hackathon Rank</div>
     </div>
