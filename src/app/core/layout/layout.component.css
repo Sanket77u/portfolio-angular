@@ -1,0 +1,76 @@
+/* Glassmorphism header/footer */
+.glass-header {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  box-shadow: 0 4px 32px 0 rgba(80,0,120,0.04);
+}
+.dark .glass-header {
+  background: rgba(24,24,32,0.7);
+}
+.glass-footer {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px) saturate(160%);
+}
+.dark .glass-footer {
+  background: rgba(24,24,32,0.6);
+}
+
+/* Logo glow effect */
+.logo-glow span {
+  box-shadow: 0 0 16px 2px #a78bfa, 0 2px 8px 0 #7c3aed33;
+}
+
+/* Navigation links */
+.nav-link {
+  position: relative;
+  font-weight: 600;
+  color: #6b21a8;
+  transition: color 0.2s;
+}
+.dark .nav-link {
+  color: #a78bfa;
+}
+.nav-link:hover, .nav-active {
+  color: #7c3aed;
+}
+.nav-link::after, .nav-active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -4px;
+  height: 3px;
+  background: linear-gradient(90deg,#a78bfa,#7c3aed);
+  border-radius: 2px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.nav-link:not(.nav-active):hover::after {
+  opacity: 1;
+}
+
+/* Footer links */
+.footer-link {
+  color: #6b21a8;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-link:hover {
+  color: #a78bfa;
+}
+.dark .footer-link {
+  color: #a78bfa;
+}
+.dark .footer-link:hover {
+  color: #f3e8ff;
+}
+
+/* Custom font for display */
+.font-display {
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 0.04em;
+}
+
+/* 3D Canvas placeholder */
+#three-canvas {
+  pointer-events: none;
+  z-index: 0;
+}

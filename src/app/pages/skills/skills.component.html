@@ -1,0 +1,61 @@
+<div class="max-w-6xl">
+  <header class="mb-12 text-center">
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Technical Skills</h1>
+    <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+      A comprehensive overview of my technical expertise and proficiency levels
+    </p>
+  </header>
+
+  <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+    <div *ngFor="let category of skillCategories" class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6 shadow-sm hover:shadow-md transition-shadow">
+      <header class="flex items-center gap-3 mb-6">
+        <span class="text-2xl">{{category.icon}}</span>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">{{category.title}}</h2>
+      </header>
+
+      <div class="space-y-4">
+        <div *ngFor="let skill of category.skills" class="group">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-medium text-gray-900 dark:text-gray-100">{{skill.name}}</h3>
+            <span *ngIf="skill.level" class="text-sm text-gray-500 dark:text-gray-400 font-medium">{{skill.level}}%</span>
+          </div>
+
+          <div *ngIf="skill.level" class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 mb-2">
+            <div class="bg-brand h-2 rounded-full transition-all duration-300 ease-out" 
+                 [style.width.%]="skill.level"></div>
+          </div>
+
+          <p *ngIf="skill.description" class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            {{skill.description}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills Summary -->
+  <section class="mt-16 p-8 rounded-xl border border-gray-200 dark:border-gray-800 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
+    <div class="text-center mb-8">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Skill Highlights</h2>
+      <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        My technical journey spans full-stack development with a strong focus on modern web technologies. 
+        I continuously expand my skillset through hands-on projects and real-world applications.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+        <div class="text-3xl font-bold text-brand mb-2">5+</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">Programming Languages</div>
+      </div>
+      <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+        <div class="text-3xl font-bold text-brand mb-2">10+</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">Frameworks & Libraries</div>
+      </div>
+      <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+        <div class="text-3xl font-bold text-brand mb-2">15+</div>
+        <div class="text-sm text-gray-600 dark:text-gray-400">Tools & Technologies</div>
+      </div>
+    </div>
+  </section>
+</div>

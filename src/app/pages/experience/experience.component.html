@@ -1,0 +1,79 @@
+<div class="max-w-4xl">
+  <header class="mb-12">
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">Work Experience</h1>
+    <p class="text-xl text-gray-600 dark:text-gray-300">
+      Professional journey in software development and technology
+    </p>
+  </header>
+
+  <div class="space-y-8">
+    <article *ngFor="let exp of experiences" class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-0 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-700 ml-4"></div>
+
+      <!-- Timeline dot -->
+      <div class="absolute left-0 top-6 w-2 h-2 bg-brand rounded-full ml-3 ring-4 ring-white dark:ring-gray-900"></div>
+
+      <!-- Content -->
+      <div class="ml-12 pb-12">
+        <div class="p-8 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800/50 shadow-sm">
+          <header class="mb-6">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
+              <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">{{exp.title}}</h2>
+              <div class="flex items-center gap-2">
+                <span *ngIf="exp.current" class="px-2 py-1 text-xs font-medium bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full">
+                  Current
+                </span>
+                <span class="text-sm text-gray-500 dark:text-gray-400">{{exp.period}}</span>
+              </div>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-gray-600 dark:text-gray-300">
+              <span class="font-medium">{{exp.company}}</span>
+              <span class="hidden sm:inline">•</span>
+              <span class="text-sm">{{exp.location}}</span>
+            </div>
+          </header>
+
+          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+            {{exp.description}}
+          </p>
+
+          <div class="mb-6">
+            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 uppercase tracking-wide">
+              Key Responsibilities
+            </h3>
+            <ul class="space-y-2">
+              <li *ngFor="let responsibility of exp.responsibilities" class="flex items-start gap-3">
+                <span class="flex-shrink-0 w-1.5 h-1.5 bg-brand rounded-full mt-2"></span>
+                <span class="text-gray-600 dark:text-gray-300 leading-relaxed">{{responsibility}}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 uppercase tracking-wide">
+              Technologies Used
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span *ngFor="let tech of exp.technologies" 
+                    class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
+                {{tech}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Future Goals Section -->
+  <section class="mt-16 p-8 rounded-xl border border-gray-200 dark:border-gray-800 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+    <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Career Objectives</h2>
+    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+      Seeking opportunities to apply my problem-solving skills and technical expertise in building 
+      efficient, scalable web applications. I'm particularly interested in roles that allow me to 
+      work with modern web technologies, contribute to meaningful projects, and continue growing 
+      as a full-stack developer specializing in Angular and Node.js ecosystems.
+    </p>
+  </section>
+</div>

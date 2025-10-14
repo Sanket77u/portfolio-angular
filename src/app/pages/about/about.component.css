@@ -1,0 +1,17 @@
+/* About component specific styles */
+.prose h2 {
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.dark .prose h2 {
+  border-bottom-color: #374151;
+}
+
+.prose h3 {
+  color: #2563eb;
+}
+
+.dark .prose h3 {
+  color: #60a5fa;
+}

@@ -1,0 +1,142 @@
+/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f3e8ff 0%, #fff 60%, #a78bfa 100%);
+  min-height: 100vh;
+  color: #22223b;
+  line-height: 1.6;
+  transition: background 0.5s;
+}
+
+body.dark {
+  background: linear-gradient(135deg, #181820 0%, #312e81 100%);
+  color: #f3e8ff;
+}
+
+/* Smoother transitions for all */
+* {
+  transition: background 0.3s, color 0.2s, box-shadow 0.2s;
+}
+
+/* Brand color utility */
+.text-brand {
+  color: #7c3aed !important;
+}
+.bg-brand {
+  background: #7c3aed !important;
+}
+.bg-brand-dark {
+  background: #6d28d9 !important;
+}
+
+/* For glassmorphism effect on cards */
+.glass-card {
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 8px 32px 0 rgba(80,0,120,0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  border-radius: 1.5rem;
+}
+.dark .glass-card {
+  background: rgba(24,24,32,0.7);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Prose styles for content */
+.prose {
+  max-width: none;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  color: #1f2937;
+}
+
+.dark .prose h2 {
+  color: #f9fafb;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.75rem 0;
+  color: #374151;
+}
+
+.dark .prose h3 {
+  color: #e5e7eb;
+}
+
+.prose p {
+  margin: 1rem 0;
+  color: #6b7280;
+}
+
+.dark .prose p {
+  color: #d1d5db;
+}
+
+.prose ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin: 0.5rem 0;
+  color: #6b7280;
+}
+
+.dark .prose li {
+  color: #d1d5db;
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Focus styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}

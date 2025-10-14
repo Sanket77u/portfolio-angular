@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sanket Uphade — Portfolio</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Full-stack developer specializing in Angular and Node.js. Computer Science student passionate about building scalable web applications.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind customization
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#2563eb',
+              dark: '#1d4ed8'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Theme: respect system + persisted preference -->
+  <script>
+    const persisted = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if ((persisted === 'dark') || (!persisted && prefersDark)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased">
+  <app-root></app-root>
+</body>
+</html>
