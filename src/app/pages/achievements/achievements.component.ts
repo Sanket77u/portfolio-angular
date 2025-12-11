@@ -35,10 +35,7 @@ export class AchievementsComponent implements OnInit, OnDestroy {
 
   // Phrases for cycling effect
   private readonly phrases = [
-    'My Achievements',
-    'Success Stories',
-    'Milestones Reached',
-    'Recognition Won'
+    'My Achievements'
   ];
 
   ngOnInit(): void {

@@ -25,7 +25,12 @@
   position: relative;
   font-weight: 600;
   color: #6b21a8;
-  transition: color 0.2s;
+  transition: all 0.3s ease;
+  padding-bottom: 8px;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 0 -12px;
 }
 .dark .nav-link {
   color: #a78bfa;
@@ -33,40 +38,484 @@
 .nav-link:hover, .nav-active {
   color: #7c3aed;
 }
-.nav-link::after, .nav-active::after {
+.dark .nav-link:hover, .dark .nav-active {
+  color: #f3e8ff;
+}
+
+/* Animated underline effect */
+.nav-link::before {
   content: '';
   position: absolute;
-  left: 0; right: 0; bottom: -4px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
   height: 3px;
-  background: linear-gradient(90deg,#a78bfa,#7c3aed);
+  background: linear-gradient(90deg, #a78bfa, #7c3aed, #c084fc);
   border-radius: 2px;
-  opacity: 0.7;
-  transition: opacity 0.2s;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(124, 58, 237, 0.4);
 }
-.nav-link:not(.nav-active):hover::after {
+
+.dark .nav-link::before {
+  background: linear-gradient(90deg, #c084fc, #a78bfa, #f3e8ff);
+  box-shadow: 0 0 8px rgba(196, 132, 252, 0.6);
+}
+
+/* Hover animation - slide from left to right */
+.nav-link:hover::before {
+  transform: translateX(0);
+}
+
+/* Subtle background hover effect */
+.nav-link:hover {
+  background: rgba(124, 58, 237, 0.05);
+  transform: translateY(-1px);
+}
+
+.dark .nav-link:hover {
+  background: rgba(196, 132, 252, 0.1);
+}
+
+/* Active state - always visible */
+.nav-active::before {
+  transform: translateX(0);
+  background: linear-gradient(90deg, #7c3aed, #a78bfa, #c084fc);
+  animation: activeGlow 2s ease-in-out infinite alternate;
+}
+
+.dark .nav-active::before {
+  background: linear-gradient(90deg, #f3e8ff, #c084fc, #a78bfa);
+}
+
+@keyframes activeGlow {
+  0% {
+    box-shadow: 0 0 8px rgba(124, 58, 237, 0.4), 0 0 16px rgba(124, 58, 237, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 12px rgba(124, 58, 237, 0.6), 0 0 24px rgba(124, 58, 237, 0.3);
+  }
+}
+
+/* Mobile navigation specific styles */
+@media (max-width: 768px) {
+  .nav-link {
+    margin: 0;
+    padding: 12px 0;
+    border-radius: 0;
+  }
+  
+  .nav-link::before {
+    height: 2px;
+    bottom: 2px;
+  }
+  
+  .nav-link:hover {
+    background: rgba(124, 58, 237, 0.05);
+    transform: translateX(4px);
+    padding-left: 8px;
+  }
+  
+  .dark .nav-link:hover {
+    background: rgba(196, 132, 252, 0.1);
+  }
+}
+
+/* Compact Footer Styling */
+.compact-footer {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.dark .compact-footer {
+  background: rgba(15, 15, 23, 0.9);
+  border-top: 1px solid rgba(167, 139, 250, 0.2);
+}
+
+/* Gradient Border Effect */
+.footer-gradient-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #7c3aed, #a855f7, #c084fc, transparent);
+  opacity: 0.6;
+}
+
+/* Footer Navigation Links */
+.footer-nav-link {
+  display: block;
+  padding: 8px 12px;
+  color: #6b7280;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-nav-link:hover {
+  color: #7c3aed;
+  background: rgba(124, 58, 237, 0.05);
+  transform: translateX(4px);
+}
+
+.dark .footer-nav-link {
+  color: #9ca3af;
+}
+
+.dark .footer-nav-link:hover {
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.1);
+}
+
+/* Social Icons */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(45deg, transparent, rgba(124, 58, 237, 0.3), transparent);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon:hover::before {
   opacity: 1;
 }
 
-/* Footer links */
-.footer-link {
-  color: #6b21a8;
-  font-weight: 500;
-  transition: color 0.2s;
+/* GitHub Icon */
+.github-icon {
+  background: rgba(36, 41, 47, 0.1);
+  color: #24292f;
+  border: 1px solid rgba(36, 41, 47, 0.2);
 }
-.footer-link:hover {
-  color: #a78bfa;
+
+.github-icon:hover {
+  background: #24292f;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(36, 41, 47, 0.3);
 }
-.dark .footer-link {
-  color: #a78bfa;
+
+.dark .github-icon {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0f6fc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
-.dark .footer-link:hover {
-  color: #f3e8ff;
+
+.dark .github-icon:hover {
+  background: #f0f6fc;
+  color: #24292f;
+}
+
+/* LinkedIn Icon */
+.linkedin-icon {
+  background: rgba(10, 102, 194, 0.1);
+  color: #0a66c2;
+  border: 1px solid rgba(10, 102, 194, 0.2);
+}
+
+.linkedin-icon:hover {
+  background: #0a66c2;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(10, 102, 194, 0.3);
+}
+
+.dark .linkedin-icon {
+  background: rgba(10, 102, 194, 0.1);
+  color: #0a66c2;
+  border: 1px solid rgba(10, 102, 194, 0.2);
+}
+
+.dark .linkedin-icon:hover {
+  background: #0a66c2;
+  color: white;
+}
+
+/* Email Icon */
+.email-icon {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.email-icon:hover {
+  background: #7c3aed;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+}
+
+.dark .email-icon {
+  background: rgba(192, 132, 252, 0.1);
+  color: #c084fc;
+  border: 1px solid rgba(192, 132, 252, 0.2);
+}
+
+.dark .email-icon:hover {
+  background: #c084fc;
+  color: white;
+}
+
+/* Compact Social Icons */
+.social-icon-compact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Compact GitHub Icon */
+.social-icon-compact.github-icon {
+  background: rgba(36, 41, 47, 0.1);
+  color: #24292f;
+  border: 1px solid rgba(36, 41, 47, 0.2);
+}
+
+.social-icon-compact.github-icon:hover {
+  background: #24292f;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.dark .social-icon-compact.github-icon {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0f6fc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .social-icon-compact.github-icon:hover {
+  background: #f0f6fc;
+  color: #24292f;
+}
+
+/* Compact LinkedIn Icon */
+.social-icon-compact.linkedin-icon {
+  background: rgba(10, 102, 194, 0.1);
+  color: #0a66c2;
+  border: 1px solid rgba(10, 102, 194, 0.2);
+}
+
+.social-icon-compact.linkedin-icon:hover {
+  background: #0a66c2;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.dark .social-icon-compact.linkedin-icon {
+  background: rgba(10, 102, 194, 0.1);
+  color: #0a66c2;
+  border: 1px solid rgba(10, 102, 194, 0.2);
+}
+
+.dark .social-icon-compact.linkedin-icon:hover {
+  background: #0a66c2;
+  color: white;
+}
+
+/* Compact Email Icon */
+.social-icon-compact.email-icon {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.social-icon-compact.email-icon:hover {
+  background: #7c3aed;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.dark .social-icon-compact.email-icon {
+  background: rgba(192, 132, 252, 0.1);
+  color: #c084fc;
+  border: 1px solid rgba(192, 132, 252, 0.2);
+}
+
+.dark .social-icon-compact.email-icon:hover {
+  background: #c084fc;
+  color: white;
 }
 
 /* Custom font for display */
 .font-display {
   font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
   letter-spacing: 0.04em;
+}
+
+/* Professional Liquid Glass Animated Name */
+.animated-name {
+  background: linear-gradient(135deg, #1a1a1a 0%, #7c3aed 50%, #a855f7 100%);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  display: inline-block;
+  font-weight: 800;
+  overflow: hidden;
+  animation: liquidFlow 4s ease-in-out infinite;
+}
+
+.dark .animated-name {
+  background: linear-gradient(135deg, #f8fafc 0%, #c084fc 50%, #a78bfa 100%);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Professional Liquid Flow Animation */
+@keyframes liquidFlow {
+  0% {
+    background-position: 0% 50%;
+    filter: saturate(1) brightness(1);
+  }
+  25% {
+    background-position: 100% 50%;
+    filter: saturate(1.1) brightness(1.05);
+  }
+  50% {
+    background-position: 100% 100%;
+    filter: saturate(1.2) brightness(1.1);
+  }
+  75% {
+    background-position: 0% 100%;
+    filter: saturate(1.1) brightness(1.05);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: saturate(1) brightness(1);
+  }
+}
+
+/* Liquid Glass Hover Effect */
+.animated-name:hover {
+  transform: scale(1.02);
+  animation: liquidFlow 1.5s ease-in-out infinite, liquidGlow 2s ease-in-out infinite;
+}
+
+.animated-name:hover::before {
+  animation: liquidGlassFlow 1s ease-in-out infinite;
+}
+
+/* Professional Liquid Glow Animation */
+@keyframes liquidGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(26, 26, 26, 0.4)) 
+            drop-shadow(0 0 16px rgba(124, 58, 237, 0.5))
+            drop-shadow(0 0 24px rgba(168, 85, 247, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(26, 26, 26, 0.6)) 
+            drop-shadow(0 0 32px rgba(124, 58, 237, 0.7))
+            drop-shadow(0 0 48px rgba(168, 85, 247, 0.5));
+  }
+}
+
+.dark .animated-name:hover {
+  animation: liquidFlow 1.5s ease-in-out infinite, liquidGlowDark 2s ease-in-out infinite;
+}
+
+@keyframes liquidGlowDark {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(248, 250, 252, 0.6)) 
+            drop-shadow(0 0 16px rgba(192, 132, 252, 0.5))
+            drop-shadow(0 0 24px rgba(167, 139, 250, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(248, 250, 252, 0.8)) 
+            drop-shadow(0 0 32px rgba(192, 132, 252, 0.7))
+            drop-shadow(0 0 48px rgba(167, 139, 250, 0.6));
+  }
+}
+
+/* Professional Liquid Glass Overlay Effect */
+.animated-name::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -100%;
+  width: 100%;
+  height: calc(100% + 4px);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(26, 26, 26, 0.2) 25%,
+    rgba(124, 58, 237, 0.3) 50%,
+    rgba(168, 85, 247, 0.2) 75%,
+    transparent 100%
+  );
+  animation: liquidGlassFlow 3s ease-in-out infinite;
+  pointer-events: none;
+  border-radius: 6px;
+  backdrop-filter: blur(2px);
+}
+
+.dark .animated-name::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(248, 250, 252, 0.3) 25%,
+    rgba(192, 132, 252, 0.4) 50%,
+    rgba(167, 139, 250, 0.3) 75%,
+    transparent 100%
+  );
+}
+
+@keyframes liquidGlassFlow {
+  0% {
+    left: -100%;
+    transform: skewX(-10deg);
+  }
+  50% {
+    transform: skewX(10deg);
+  }
+  100% {
+    left: 100%;
+    transform: skewX(-10deg);
+  }
+}
+
+/* Liquid Glass Breathing Effect */
+.animated-name {
+  animation: liquidFlow 4s ease-in-out infinite, liquidBreathe 6s ease-in-out infinite;
+}
+
+@keyframes liquidBreathe {
+  0%, 100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translateY(-0.5px) scale(1.005);
+  }
 }
 
 /* 3D Canvas placeholder */

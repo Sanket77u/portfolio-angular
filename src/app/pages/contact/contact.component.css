@@ -64,3 +64,162 @@ button:hover:not(:disabled) {
     opacity: 0;
   }
 }
+
+/* Social Icons - Same as Footer */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  padding: 1px;
+  background: linear-gradient(45deg, transparent, rgba(124, 58, 237, 0.3), transparent);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon:hover::before {
+  opacity: 1;
+}
+
+/* GitHub Icon */
+.github-icon {
+  background: rgba(36, 41, 47, 0.1);
+  color: #24292f;
+  border: 1px solid rgba(36, 41, 47, 0.2);
+}
+
+.github-icon:hover {
+  background: #24292f;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(36, 41, 47, 0.3);
+}
+
+.dark .github-icon {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0f6fc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .github-icon:hover {
+  background: #f0f6fc;
+  color: #24292f;
+}
+
+/* LinkedIn Icon */
+.linkedin-icon {
+  background: rgba(10, 102, 194, 0.1);
+  color: #0a66c2;
+  border: 1px solid rgba(10, 102, 194, 0.2);
+}
+
+.linkedin-icon:hover {
+  background: #0a66c2;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(10, 102, 194, 0.3);
+}
+
+.dark .linkedin-icon {
+  background: rgba(10, 102, 194, 0.1);
+  color: #0a66c2;
+  border: 1px solid rgba(10, 102, 194, 0.2);
+}
+
+.dark .linkedin-icon:hover {
+  background: #0a66c2;
+  color: white;
+}
+
+/* Email Icon */
+.email-icon {
+  background: rgba(124, 58, 237, 0.1);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.email-icon:hover {
+  background: #7c3aed;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+}
+
+.dark .email-icon {
+  background: rgba(192, 132, 252, 0.1);
+  color: #c084fc;
+  border: 1px solid rgba(192, 132, 252, 0.2);
+}
+
+.dark .email-icon:hover {
+  background: #c084fc;
+  color: white;
+}
+
+/* Notification Animation */
+.notification-enter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.notification-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.notification-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.notification-exit-active {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Email validation styles */
+.border-green-500 {
+  border-color: #10b981 !important;
+}
+
+.border-red-500 {
+  border-color: #ef4444 !important;
+}
+
+.focus\:ring-green-500:focus {
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2) !important;
+}
+
+.focus\:ring-red-500:focus {
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+}
+
+/* Loading spinner */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
