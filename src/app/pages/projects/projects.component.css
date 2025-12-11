@@ -43,3 +43,22 @@ article {
 a:hover svg {
   transform: scale(1.1);
 }
+
+/* Typewriter cursor effect */
+.typewriter-cursor {
+  animation: blink 1s infinite;
+  color: #374151; /* Gray-700 for light theme */
+}
+
+.dark .typewriter-cursor {
+  color: #f9fafb; /* Gray-50 for dark theme */
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}

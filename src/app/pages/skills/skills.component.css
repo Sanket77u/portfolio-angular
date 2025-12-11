@@ -31,3 +31,63 @@
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
+
+/* Typewriter cursor effect */
+.typewriter-cursor {
+  animation: blink 1s infinite;
+  color: #374151; /* Gray-700 for light theme */
+}
+
+.dark .typewriter-cursor {
+  color: #f9fafb; /* Gray-50 for dark theme */
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Progress bar animation with glowing effect */
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.5), 0 0 20px rgba(37, 99, 235, 0.3);
+  animation: continuousGlow 3s ease-in-out infinite;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.9) 20%,
+    rgba(255, 255, 255, 0.9) 80%,
+    transparent 100%);
+  animation: slideShine 2s ease-in-out infinite;
+}
+
+@keyframes continuousGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.5), 0 0 20px rgba(37, 99, 235, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.8), 0 0 35px rgba(37, 99, 235, 0.6), 0 0 50px rgba(37, 99, 235, 0.2);
+  }
+}
+
+@keyframes slideShine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

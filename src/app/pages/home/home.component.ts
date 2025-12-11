@@ -1,101 +1,102 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  ViewChild,
-} from "@angular/core";
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as THREE from "three";
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"],
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
-  skills = [
-    "Angular",
-    "Node.js",
-    "Express",
-    "TypeScript",
-    "SQL",
-    "Ant Design (NG-ZORRO)",
+
+export class HomeComponent implements OnInit, OnDestroy {
+
+
+
+
+
+
+
+  
+  skills: string[] = [
+    'Angular',
+    'Node.js',
+    'Express',
+    'TypeScript',
+    'MongoDB',
+    'PostgreSQL',
+    'REST APIs',
+    'Git'
   ];
-  @ViewChild("bgCanvas", { static: true })
-  bgCanvas!: ElementRef<HTMLCanvasElement>;
 
-  private renderer!: THREE.WebGLRenderer;
-  private scene!: THREE.Scene;
-  private camera!: THREE.PerspectiveCamera;
-  private frameId!: number;
+  roles: string[] = [
+    'Full-Stack Developer',
+    'Angular Developer',
+    'Node.js Developer',
+    'React Developer',
+    'Express.js Developer'
+  ];
 
-  ngAfterViewInit() {
-    const canvas = this.bgCanvas.nativeElement;
-    this.renderer = new THREE.WebGLRenderer({
-      canvas,
-      alpha: true,
-      antialias: true,
-    });
-    this.resizeCanvas();
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(
-      45,
-      canvas.clientWidth / canvas.clientHeight,
-      0.1,
-      1000
-    );
-    this.camera.position.z = 5;
+  private roleIndex: number = 0;
+  private roleInterval: any;
 
-    // Solid semi-transparent triangle
-    const geometry = new THREE.BufferGeometry();
-    const vertices = new Float32Array([
-      0,
-      2.8,
-      0, // top
-      -2.8,
-      -2.8,
-      0, // bottom left
-      2.8,
-      -2.8,
-      0, // bottom right
-    ]);
-    geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3));
-    geometry.computeVertexNormals();
-
-    const material = new THREE.MeshBasicMaterial({
-      color: 0x007acc,
-      side: THREE.DoubleSide,
-      transparent: true,
-      opacity: 0.5,
-    });
-    const triangle = new THREE.Mesh(geometry, material);
-    triangle.position.set(1, 0, -1);
-    triangle.rotation.z = Math.PI / 8;
-    this.scene.add(triangle);
-
-    // Animate
-    const animate = () => {
-      triangle.rotation.z += 0.005;
-      this.renderer.render(this.scene, this.camera);
-      this.frameId = requestAnimationFrame(animate);
-    };
-    animate();
-
-    window.addEventListener("resize", this.resizeCanvas.bind(this));
+  ngOnInit(): void {
+    // Start role animation after component loads
+    this.startRoleAnimation();
   }
 
-  private resizeCanvas() {
-    const canvas = this.bgCanvas.nativeElement;
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
-    this.renderer.setSize(width, height);
-    if (this.camera) {
-      this.camera.aspect = width / height;
-      this.camera.updateProjectionMatrix();
+  ngOnDestroy(): void {
+    // Clean up interval when component is destroyed
+    if (this.roleInterval) {
+      clearInterval(this.roleInterval);
     }
   }
 
-  ngOnDestroy() {
-    cancelAnimationFrame(this.frameId);
-    this.renderer.dispose();
+  startRoleAnimation(): void {
+    const roleElement = document.getElementById('role-text');
+    if (!roleElement) return;
+
+    const typeRole = (text: string, callback?: () => void) => {
+      let charIndex = 0;
+      roleElement.textContent = '';
+      
+      const typeInterval = setInterval(() => {
+        if (charIndex < text.length) {
+          roleElement.textContent += text[charIndex];
+          charIndex++;
+        } else {
+          clearInterval(typeInterval);
+          if (callback) {
+            setTimeout(callback, 2000); // Wait 2 seconds before erasing
+          }
+        }
+      }, 100); // Type each character every 100ms
+    };
+
+    const eraseRole = (callback?: () => void) => {
+      const currentText = roleElement.textContent || '';
+      let charIndex = currentText.length;
+      
+      const eraseInterval = setInterval(() => {
+        if (charIndex > 0) {
+          roleElement.textContent = currentText.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          clearInterval(eraseInterval);
+          if (callback) {
+            setTimeout(callback, 300); // Small pause before typing next role
+          }
+        }
+      }, 50); // Erase faster than typing
+    };
+
+    const cycleRoles = () => {
+      this.roleIndex = (this.roleIndex + 1) % this.roles.length;
+      typeRole(this.roles[this.roleIndex], () => {
+        eraseRole(cycleRoles);
+      });
+    };
+
+    // Start with first role
+    typeRole(this.roles[this.roleIndex], () => {
+      eraseRole(cycleRoles);
+    });
   }
 }

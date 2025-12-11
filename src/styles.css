@@ -14,11 +14,68 @@ body {
   color: #22223b;
   line-height: 1.6;
   transition: background 0.5s;
+  position: relative;
+  overflow-x: hidden;
 }
 
 body.dark {
   background: linear-gradient(135deg, #181820 0%, #312e81 100%);
   color: #f3e8ff;
+}
+
+/* Theme Transition Animation - Smooth Curtain Effect */
+body.theme-transitioning {
+  overflow: hidden;
+}
+
+/* Light purple for day to night transition */
+body.theme-transitioning::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(to bottom, 
+    rgba(196, 181, 253, 0.92) 0%, 
+    rgba(167, 139, 250, 0.95) 50%,
+    rgba(196, 181, 253, 0.92) 100%
+  );
+  z-index: 99999;
+  animation: curtainDown 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  pointer-events: none;
+}
+
+/* Dark purple for night to day transition */
+body.dark.theme-transitioning::before {
+  background: linear-gradient(to bottom, 
+    rgba(30, 27, 75, 0.95) 0%, 
+    rgba(49, 46, 129, 0.98) 50%,
+    rgba(30, 27, 75, 0.95) 100%
+  );
+}
+
+@keyframes curtainDown {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  50% {
+    height: 100%;
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    height: 0;
+    opacity: 0;
+    top: auto;
+    bottom: 0;
+  }
 }
 
 /* Smoother transitions for all */
@@ -126,12 +183,6 @@ body.dark {
 
 .dark .prose li {
   color: #d1d5db;
-}
-
-/* Smooth transitions */
-* {
-  transition: background-color 0.2s ease, color 0.2s ease,
-    border-color 0.2s ease;
 }
 
 /* Focus styles */
