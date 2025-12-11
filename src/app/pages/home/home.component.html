@@ -2,17 +2,19 @@
 
 
 <section
-  class="relative overflow-hidden grid lg:grid-cols-2 gap-12 items-center py-16 px-4 md:px-8"
+  class="relative overflow-hidden grid lg:grid-cols-2 gap-12 items-center py-10 px-4 md:px-8"
 >
   <!-- 3D Background Canvas -->
+   <div class="container h-screen flex">
   <canvas
+  id="bgCanvas"
     #bgCanvas
-    class="absolute top-0 w-[1000px] h-[1000px] pointer-events-none"
+    class="absolute top-0 left-0 w-full h-full"
   ></canvas>
-
+ </div>
   <!-- Hero Content -->
-  <div class="space-y-8 z-10 lg:col-span-1">
-    <div class="space-y-4 max-w-xl">
+  <div class="relative  z-10 lg:col-span-1  lg:order-start  float-left !important">
+    <div class="space-y-1 max-w-xl ">
       <h1
         class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight"
       >
