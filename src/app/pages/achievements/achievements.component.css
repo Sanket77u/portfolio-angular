@@ -1,56 +1,61 @@
 /* Achievements component styles */
-.hover\:shadow-md:hover {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-.dark .hover\:shadow-md:hover {
-  box-shadow: 0 4px 6px -1px rgb(255 255 255 / 0.1), 0 2px 4px -2px rgb(255 255 255 / 0.1);
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-/* Timeline animations */
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(255 255 255 / 0.05), 0 4px 6px -4px rgb(255 255 255 / 0.05);
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgb(255 255 255 / 0.05), 0 8px 10px -6px rgb(255 255 255 / 0.05);
+}
+
+/* Card animations */
 article {
-  animation: slideInRight 0.6s ease-out;
+  animation: fadeInUp 0.6s ease-out;
+  min-height: 420px;
 }
 
-article:nth-child(even) {
-  animation: slideInLeft 0.6s ease-out;
-}
-
-@keyframes slideInRight {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* Card hover effect */
+article:hover {
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
 }
 
-/* Achievement icon pulse effect */
-article:hover .achievement-icon {
-  animation: pulse 2s infinite;
+/* Achievement icon animation */
+article:hover span:first-child {
+  animation: pulse 1s infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.1); 
+  }
 }
 
 /* Link hover effects */
 a:hover svg {
   transform: translateX(2px);
+  transition: transform 0.2s ease;
 }
 
 /* Gradient backgrounds */
@@ -58,14 +63,18 @@ a:hover svg {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
 /* Typewriter cursor effect */
 .typewriter-cursor {
   animation: blink 1s infinite;
-  color: #374151; /* Gray-700 for light theme */
+  color: #374151;
 }
 
 .dark .typewriter-cursor {
-  color: #f9fafb; /* Gray-50 for dark theme */
+  color: #f9fafb;
 }
 
 @keyframes blink {
@@ -75,4 +84,45 @@ a:hover svg {
   51%, 100% {
     opacity: 0;
   }
+}
+
+/* Ensure consistent card heights */
+article {
+  display: flex;
+  flex-direction: column;
+}
+
+article .p-5 {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Responsive grid adjustments */
+@media (min-width: 1024px) {
+  .grid.lg\:grid-cols-3 > article {
+    height: 100%;
+  }
+}
+
+/* Category badge colors - compact */
+.px-2 {
+  font-size: 0.75rem;
+}
+
+/* Metric cards styling */
+.space-y-1\.5 > * + * {
+  margin-top: 0.375rem;
+}
+
+/* Links section at bottom */
+.mt-auto {
+  margin-top: auto;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition-property: color, background-color, border-color, transform, box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
 }

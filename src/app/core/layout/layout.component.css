@@ -7,17 +7,61 @@
 .dark .glass-header {
   background: rgba(24,24,32,0.7);
 }
-.glass-footer {
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(12px) saturate(160%);
-}
-.dark .glass-footer {
-  background: rgba(24,24,32,0.6);
+
+/* Logo Icon Effect */
+.logo-icon {
+  transition: all 0.3s ease;
 }
 
-/* Logo glow effect */
-.logo-glow span {
-  box-shadow: 0 0 16px 2px #a78bfa, 0 2px 8px 0 #7c3aed33;
+.logo-icon:hover {
+  transform: rotate(360deg) scale(1.1);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+/* Modern Name Styling - Clean & Professional */
+.animated-name {
+  font-family: 'Poppins', 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(135deg, #1e293b 0%, #3b82f6 50%, #8b5cf6 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nameShift 8s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.dark .animated-name {
+  background: linear-gradient(135deg, #f8fafc 0%, #60a5fa 50%, #a78bfa 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nameShift 8s ease-in-out infinite;
+}
+
+/* Smooth Gradient Animation */
+@keyframes nameShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Subtle Hover Effect */
+.animated-name:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.3));
+  animation: nameShift 3s ease-in-out infinite;
+}
+
+.dark .animated-name:hover {
+  filter: drop-shadow(0 4px 8px rgba(167, 139, 250, 0.4));
 }
 
 /* Navigation links */
@@ -364,158 +408,8 @@
 
 /* Custom font for display */
 .font-display {
-  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
-  letter-spacing: 0.04em;
-}
-
-/* Professional Liquid Glass Animated Name */
-.animated-name {
-  background: linear-gradient(135deg, #1a1a1a 0%, #7c3aed 50%, #a855f7 100%);
-  background-size: 300% 300%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
-  display: inline-block;
-  font-weight: 800;
-  overflow: hidden;
-  animation: liquidFlow 4s ease-in-out infinite;
-}
-
-.dark .animated-name {
-  background: linear-gradient(135deg, #f8fafc 0%, #c084fc 50%, #a78bfa 100%);
-  background-size: 300% 300%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Professional Liquid Flow Animation */
-@keyframes liquidFlow {
-  0% {
-    background-position: 0% 50%;
-    filter: saturate(1) brightness(1);
-  }
-  25% {
-    background-position: 100% 50%;
-    filter: saturate(1.1) brightness(1.05);
-  }
-  50% {
-    background-position: 100% 100%;
-    filter: saturate(1.2) brightness(1.1);
-  }
-  75% {
-    background-position: 0% 100%;
-    filter: saturate(1.1) brightness(1.05);
-  }
-  100% {
-    background-position: 0% 50%;
-    filter: saturate(1) brightness(1);
-  }
-}
-
-/* Liquid Glass Hover Effect */
-.animated-name:hover {
-  transform: scale(1.02);
-  animation: liquidFlow 1.5s ease-in-out infinite, liquidGlow 2s ease-in-out infinite;
-}
-
-.animated-name:hover::before {
-  animation: liquidGlassFlow 1s ease-in-out infinite;
-}
-
-/* Professional Liquid Glow Animation */
-@keyframes liquidGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 8px rgba(26, 26, 26, 0.4)) 
-            drop-shadow(0 0 16px rgba(124, 58, 237, 0.5))
-            drop-shadow(0 0 24px rgba(168, 85, 247, 0.3));
-  }
-  50% {
-    filter: drop-shadow(0 0 16px rgba(26, 26, 26, 0.6)) 
-            drop-shadow(0 0 32px rgba(124, 58, 237, 0.7))
-            drop-shadow(0 0 48px rgba(168, 85, 247, 0.5));
-  }
-}
-
-.dark .animated-name:hover {
-  animation: liquidFlow 1.5s ease-in-out infinite, liquidGlowDark 2s ease-in-out infinite;
-}
-
-@keyframes liquidGlowDark {
-  0%, 100% {
-    filter: drop-shadow(0 0 8px rgba(248, 250, 252, 0.6)) 
-            drop-shadow(0 0 16px rgba(192, 132, 252, 0.5))
-            drop-shadow(0 0 24px rgba(167, 139, 250, 0.4));
-  }
-  50% {
-    filter: drop-shadow(0 0 16px rgba(248, 250, 252, 0.8)) 
-            drop-shadow(0 0 32px rgba(192, 132, 252, 0.7))
-            drop-shadow(0 0 48px rgba(167, 139, 250, 0.6));
-  }
-}
-
-/* Professional Liquid Glass Overlay Effect */
-.animated-name::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -100%;
-  width: 100%;
-  height: calc(100% + 4px);
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(26, 26, 26, 0.2) 25%,
-    rgba(124, 58, 237, 0.3) 50%,
-    rgba(168, 85, 247, 0.2) 75%,
-    transparent 100%
-  );
-  animation: liquidGlassFlow 3s ease-in-out infinite;
-  pointer-events: none;
-  border-radius: 6px;
-  backdrop-filter: blur(2px);
-}
-
-.dark .animated-name::before {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(248, 250, 252, 0.3) 25%,
-    rgba(192, 132, 252, 0.4) 50%,
-    rgba(167, 139, 250, 0.3) 75%,
-    transparent 100%
-  );
-}
-
-@keyframes liquidGlassFlow {
-  0% {
-    left: -100%;
-    transform: skewX(-10deg);
-  }
-  50% {
-    transform: skewX(10deg);
-  }
-  100% {
-    left: 100%;
-    transform: skewX(-10deg);
-  }
-}
-
-/* Liquid Glass Breathing Effect */
-.animated-name {
-  animation: liquidFlow 4s ease-in-out infinite, liquidBreathe 6s ease-in-out infinite;
-}
-
-@keyframes liquidBreathe {
-  0%, 100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    opacity: 0.95;
-    transform: translateY(-0.5px) scale(1.005);
-  }
+  font-family: 'Poppins', 'Inter', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 /* 3D Canvas placeholder */

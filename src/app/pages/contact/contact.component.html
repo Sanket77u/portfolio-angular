@@ -1,280 +1,475 @@
-<!-- Hero Header Section -->
-<div class="relative overflow-hidden">
-  <!-- Background Gradient -->
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900/20 dark:to-cyan-900/20 -z-10">
-  </div>
+<section #contactSection id="contact" class="contact-wrapper">
+  <!-- Hero Header Section -->
+  <div class="relative overflow-hidden">
+    <!-- Background Gradient -->
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-emerald-900/20 dark:to-cyan-900/20 -z-10">
+    </div>
 
-  <!-- Floating Elements -->
-  <div
-    class="absolute top-20 left-10 w-20 h-20 bg-emerald-200/30 dark:bg-emerald-500/20 rounded-full blur-xl animate-pulse">
-  </div>
-  <div
-    class="absolute bottom-20 right-10 w-32 h-32 bg-cyan-200/30 dark:bg-cyan-500/20 rounded-full blur-xl animate-pulse delay-1000">
-  </div>
+    <!-- Floating Elements -->
+    <div
+      class="absolute top-20 left-10 w-20 h-20 bg-emerald-200/30 dark:bg-emerald-500/20 rounded-full blur-xl animate-pulse">
+    </div>
+    <div
+      class="absolute bottom-20 right-10 w-32 h-32 bg-cyan-200/30 dark:bg-cyan-500/20 rounded-full blur-xl animate-pulse delay-1000">
+    </div>
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Hero Content -->
-    <div class="text-center py-6 lg:py-12">
-      <div
-        class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 mb-4 shadow-lg">
-        <span class="text-sm font-medium text-gray-600 dark:text-gray-300">📞 Let's Connect</span>
-      </div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Hero Content -->
+      <div class="text-center py-6 lg:py-12">
+        <div
+          class="inline-flex items-center px-4 py-2 rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 mb-4 shadow-lg">
+          <span class="text-sm font-medium text-gray-600 dark:text-gray-300"><span class="emoji-hover">📞</span> Let's
+            Connect</span>
+        </div>
 
-      <h1
-        class="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent mb-4 leading-tight min-h-[120px] lg:min-h-[180px] flex items-center justify-center">
-        {{displayedText}}<span [class.hidden]="!cursorVisible" class="typewriter-cursor">|</span>
-      </h1>
+        <h1
+          class="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent mb-4 leading-tight min-h-[120px] lg:min-h-[180px] flex items-center justify-center">
+          {{displayedText}}<span [class.hidden]="!cursorVisible" class="typewriter-cursor">|</span>
+        </h1>
 
-      <p class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8 font-light">
-        Let's connect and discuss opportunities, projects, or collaborations
-      </p>
+        <p
+          class="text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8 font-light">
+          Let's connect and discuss opportunities, projects, or collaborations
+        </p>
 
-      <!-- <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+        <!-- <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
         <span class="px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-gray-700/50">
-          💬 Discussions
+          <span class="emoji-hover">💬</span> Discussions
         </span>
         <span class="px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-gray-700/50">
-          🤝 Collaborations
+          <span class="emoji-hover">🤝</span> Collaborations
         </span>
         <span class="px-4 py-2 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-gray-700/50">
-          🚀 Opportunities
+          <span class="emoji-hover">🚀</span> Opportunities
         </span>
       </div> -->
-    </div>
-  </div>
-</div>
-
-<!-- Notification - Above Navbar -->
-<div *ngIf="notification.show" 
-  class="fixed top-22 right-4 z-[9999] max-w-sm w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg border-l-4 transform transition-all duration-300 ease-in-out"
-  [class.border-green-500]="notification.type === 'success'"
-  [class.border-red-500]="notification.type === 'error'"
-  style="z-index: 10000;">
-  <div class="p-4">
-    <div class="flex items-start">
-      <div class="flex-shrink-0">
-        <svg *ngIf="notification.type === 'success'" class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-        </svg>
-        <svg *ngIf="notification.type === 'error'" class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-        </svg>
-      </div>
-      <div class="ml-3 flex-1">
-        <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-          {{ notification.title }}
-        </h3>
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
-          {{ notification.message }}
-        </p>
-      </div>
-      <div class="ml-4 flex-shrink-0">
-        <button (click)="hideNotification()" 
-          class="inline-flex text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
-          </svg>
-        </button>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Main Content -->
-<div class="max-w-6xl mx-auto px-4 md:px-8 mt-4">
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 md:px-8 mt-4">
 
-  <!-- Contact Overview Section -->
-  <section class="text-center mb-16">
-    <div class="glass-title mb-12">
-      <div
-        class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-2xl mb-6 shadow-lg">
-        <span class="text-2xl">📞</span>
-      </div>
-      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-        Get In Touch
-      </h2>
-      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-0">
-        Ready to collaborate on your next project or discuss opportunities
-      </p>
-    </div>
-  </section>
-
-  <div class="grid lg:grid-cols-2 gap-12">
-    <!-- Left Column: Contact Info & Social -->
-    <div class="space-y-8">
-      <!-- Contact Information -->
-      <section>
-        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
-          Contact Information
-        </h2>
-        <div class="space-y-4">
-          <div *ngFor="let info of contactInfo"
-            class="flex items-center gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-            <span class="text-2xl">{{ info.icon }}</span>
-            <div class="flex-1">
-              <div class="text-sm text-gray-500 dark:text-gray-400">
-                {{ info.label }}
-              </div>
-              <ng-container *ngIf="info.link; else plainText">
-                <a [href]="info.link" target="_blank" rel="noopener" [ngClass]="{
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Left Column: Contact Info & Social -->
+      <div class="space-y-8">
+        <!-- Contact Information -->
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+            Contact Information
+          </h2>
+          <div class="space-y-4">
+            <div *ngFor="let info of contactInfo"
+              class="flex items-center gap-4 p-4 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+              <span class="text-2xl emoji-hover">{{ info.icon }}</span>
+              <div class="flex-1">
+                <div class="text-sm text-gray-500 dark:text-gray-400">
+                  {{ info.label }}
+                </div>
+                <ng-container *ngIf="info.link; else plainText">
+                  <a [href]="info.link" target="_blank" rel="noopener" [ngClass]="{
                     'text-brand hover:text-brand-dark':
                       info.type === 'email' ||
                       info.type === 'social' ||
                       info.type === 'profile'
                   }" class="font-medium transition">
-                  {{ info.value }}
-                </a>
-              </ng-container>
-              <ng-template #plainText>
-                <span class="font-medium text-gray-900 dark:text-gray-100">
-                  {{ info.value }}
-                </span>
-              </ng-template>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Social Links -->
-      <section>
-        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
-          Connect on Social
-        </h2>
-        <div class="flex flex-wrap gap-4">
-          <a href="https://github.com/sanket-uphade077" target="_blank" rel="noopener" class="social-icon github-icon" title="GitHub">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-          </a>
-          <a href="https://linkedin.com/in/sanket-uphade" target="_blank" rel="noopener" class="social-icon linkedin-icon" title="LinkedIn">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-          <a href="mailto:sanket77gmail.com" class="social-icon email-icon" title="Email">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/>
-              <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
-            </svg>
-          </a>
-        </div>
-      </section>
-
-      <!-- Opportunities -->
-      <section
-        class="p-6 rounded-xl border border-gray-200 dark:border-gray-800 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
-          Open to Opportunities
-        </h3>
-        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
-          I’m actively seeking internships and full-stack development roles,
-          especially on Angular/Node.js projects and innovative web solutions.
-        </p>
-        <div class="mt-4 flex flex-wrap gap-2">
-          <span class="px-3 py-1 text-sm rounded-full bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300">
-            Full-Stack Development
-          </span>
-          <span class="px-3 py-1 text-sm rounded-full bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300">
-            Angular Projects
-          </span>
-          <span class="px-3 py-1 text-sm rounded-full bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300">
-            Node.js Backend
-          </span>
-          <span class="px-3 py-1 text-sm rounded-full bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300">
-            Internships
-          </span>
-        </div>
-      </section>
-    </div>
-
-    <!-- Right Column: Contact Form -->
-    <div>
-      <section class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8 shadow-sm">
-        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
-          Send a Message
-        </h2>
-        <form (ngSubmit)="onSubmit()" class="space-y-6">
-          <div class="grid md:grid-cols-2 gap-6">
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Name *
-              </label>
-              <input id="name" name="name" type="text" [(ngModel)]="contactForm.name" required
-                placeholder="Your full name"
-                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand transition" />
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Email *
-              </label>
-              <input id="email" name="email" type="email" [(ngModel)]="contactForm.email" required
-                placeholder="your.email@example.com"
-                [class]="'w-full px-4 py-3 rounded-lg border bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 transition ' + 
-                (contactForm.email ? getEmailValidationClass() : 'border-gray-300 dark:border-gray-600 focus:ring-brand')" />
-              <div *ngIf="contactForm.email && !isValidEmail(contactForm.email)" 
-                class="mt-1 text-sm text-red-600 dark:text-red-400">
-                Please enter a valid email address
+                    {{ info.value }}
+                  </a>
+                </ng-container>
+                <ng-template #plainText>
+                  <span class="font-medium text-gray-900 dark:text-gray-100">
+                    {{ info.value }}
+                  </span>
+                </ng-template>
               </div>
             </div>
           </div>
-          <div>
-            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Subject *
-            </label>
-            <input id="subject" name="subject" type="text" [(ngModel)]="contactForm.subject" required
-              placeholder="What would you like to discuss?"
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand transition" />
-          </div>
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Message *
-            </label>
-            <textarea id="message" name="message" rows="6" [(ngModel)]="contactForm.message" required
-              placeholder="Tell me about your project, opportunity, or what you'd like to collaborate on..."
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand transition resize-vertical"></textarea>
-          </div>
-          <button type="submit" [disabled]="!isFormValid() || isSubmitting"
-            class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-brand text-white font-medium rounded-lg hover:bg-brand-dark focus:ring-2 focus:ring-brand focus:ring-offset-2 disabled:opacity-50 transition">
-            <span *ngIf="!isSubmitting">Send Message</span>
-            <span *ngIf="isSubmitting">Sending...</span>
-            <svg *ngIf="!isSubmitting" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-            </svg>
-            <svg *ngIf="isSubmitting" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-          </button>
-        </form>
-      </section>
+        </section>
 
-      <!-- Quick Response Guarantee -->
-      <div class="mt-6 p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
-        <div class="flex items-center gap-3">
-          <i class="fa fa-check text-green-600 dark:text-green-400"></i>
-          <div>
-            <p class="text-sm font-medium text-green-800 dark:text-green-200">
-              Quick Response Guaranteed
-            </p>
-            <p class="text-xs text-green-600 dark:text-green-400">
-              I typically respond within 24 hours
-            </p>
+        <!-- Social Links -->
+        <section>
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+            Connect on Social
+          </h2>
+          <div class="flex flex-wrap gap-4">
+            <a *ngFor="let social of socialLinks" [href]="social.url" target="_blank" rel="noopener"
+              class="flex items-center justify-center p-3 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-brand hover:text-white transition"
+              [title]="social.name">
+              <ng-container [ngSwitch]="social.name">
+                <img *ngSwitchCase="'GitHub'" src="assets/github.png" alt="GitHub" class="w-6 h-6" />
+                <img *ngSwitchCase="'Codeforces'" src="assets/codeforces.png" alt="Codeforces" class="w-6 h-6" />
+
+                <img *ngSwitchCase="'Email'" src="assets/email.png" alt="Email" class="w-6 h-6" />
+              </ng-container>
+            </a>
+          </div>
+        </section>
+
+        <!-- Opportunities -->
+        <section
+          class="p-6 rounded-xl border border-gray-200 dark:border-gray-800 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3">
+            Open to Opportunities
+          </h3>
+          <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+            I’m actively seeking internships and full-stack development roles,
+            especially on Angular/Node.js projects and innovative web solutions.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span
+              class="px-3 py-1 text-sm rounded-full bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300">
+              Full-Stack Development
+            </span>
+            <span
+              class="px-3 py-1 text-sm rounded-full bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300">
+              Angular Projects
+            </span>
+            <span
+              class="px-3 py-1 text-sm rounded-full bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300">
+              Node.js Backend
+            </span>
+            <span
+              class="px-3 py-1 text-sm rounded-full bg-white/50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300">
+              Internships
+            </span>
+          </div>
+        </section>
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <div>
+        <section class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-8 shadow-sm">
+          <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+            Send a Message
+          </h2>
+          <form (ngSubmit)="onSubmit()" class="space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Name *
+                </label>
+                <input id="name" name="name" type="text" [(ngModel)]="contactForm.name" required
+                  placeholder="Your full name"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand transition" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Email *
+                </label>
+                <input id="email" name="email" type="email" [(ngModel)]="contactForm.email" required
+                  placeholder="your.email@example.com"
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand transition" />
+              </div>
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Subject *
+              </label>
+              <input id="subject" name="subject" type="text" [(ngModel)]="contactForm.subject" required
+                placeholder="What would you like to discuss?"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand transition" />
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Message *
+              </label>
+              <textarea id="message" name="message" rows="6" [(ngModel)]="contactForm.message" required
+                placeholder="Tell me about your project, opportunity, or what you'd like to collaborate on..."
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-brand transition resize-vertical"></textarea>
+            </div>
+            <button type="submit" [disabled]="!isFormValid()"
+              class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-brand text-white font-medium rounded-lg hover:bg-brand-dark focus:ring-2 focus:ring-brand focus:ring-offset-2 disabled:opacity-50 transition">
+              Send Message
+              <i class="fa fa-paper-plane"></i>
+            </button>
+          </form>
+        </section>
+
+        <!-- Quick Response Guarantee -->
+        <div class="mt-6 p-4 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+          <div class="flex items-center gap-3">
+            <i class="fa fa-check text-green-600 dark:text-green-400"></i>
+            <div>
+              <p class="text-sm font-medium text-green-800 dark:text-green-200">
+                Quick Response Guaranteed
+              </p>
+              <p class="text-xs text-green-600 dark:text-green-400">
+                I typically respond within 24 hours
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Footer CTA -->
-  <section class="mt-16 text-center p-8 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
-    <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
-      Let's Build Something Amazing
-    </h2>
-    <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-      Whether you have a project idea, internship opportunity, or just want to
-      discuss technology, I'm always excited to connect with fellow developers,
-      recruiters, and innovators. Let's create solutions that make a difference!
-    </p>
-  </section>
-</div>
+    <!-- Footer CTA -->
+    <!-- <section
+      class="mt-16 text-center p-8 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
+      <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        Let's Build Something Amazing
+      </h2>
+      <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        Whether you have a project idea, internship opportunity, or just want to
+        discuss technology, I'm always excited to connect with fellow developers,
+        recruiters, and innovators. Let's create solutions that make a difference!
+      </p>
+    </section> -->
+    <section class="text-center py-16 mt-16">
+      <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-12 text-white shadow-2xl">
+        <h3 class="text-3xl lg:text-4xl font-bold mb-6">
+          Interested in Collaborating?
+        </h3>
+        <p class="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+          I'm always excited to work on new projects and challenges. Whether it's web development,
+          AI integration, or innovative solutions, let's build something amazing together.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <button routerLink="/contact"
+            class="px-8 py-4 bg-white text-gray-900 rounded-full font-semibold hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200">
+            Get in Touch
+          </button>
+          <button routerLink="/achievements"
+            class="px-8 py-4 border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white/10 transition-all duration-200 backdrop-blur-sm">
+            View My Achievements
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Review Dialog with Emoji Rating -->
+    <div *ngIf="reviewDialog.isVisible"
+      class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm mt-16">
+      <div
+        class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-sm w-full relative transform transition-all duration-300 scale-100 mx-4 mt-16">
+        <!-- Close button (only enabled after rating) -->
+        <button (click)="hideReviewDialog()"
+          class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <!-- Success state -->
+        <div *ngIf="reviewDialog.isSubmitted" class="text-center p-3">
+          <div class="mb-3">
+            <div
+              class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+              <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">Thank You!</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-300">Your feedback helps me improve.</p>
+          </div>
+        </div>
+
+        <!-- Rating state -->
+        <div *ngIf="!reviewDialog.isSubmitted" class="p-3">
+          <div class="text-center mb-3">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">Rate Your Experience</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-xs">How would you rate your visit to my portfolio?</p>
+          </div>
+
+          <!-- Emoji Rating -->
+          <div class="flex justify-center mb-3 mt-2">
+            <div class="flex space-x-2">
+              <!-- 1 Star - Angry/Disappointed -->
+              <button (click)="setRating(1)" [class.emoji-selected]="reviewDialog.rating === 1"
+                class="emoji-rating-btn text-5xl transition-all duration-300 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 rounded-full p-2 hover:rotate-12"
+                style="filter: grayscale(100%);"
+                [style.filter]="reviewDialog.rating === 1 ? 'grayscale(0%) drop-shadow(0 0 10px rgba(239, 68, 68, 0.5))' : (reviewDialog.rating > 0 ? 'grayscale(70%)' : 'grayscale(100%)')">
+                😡
+              </button>
+
+              <!-- 2 Stars - Sad -->
+              <button (click)="setRating(2)" [class.emoji-selected]="reviewDialog.rating === 2"
+                class="emoji-rating-btn text-5xl transition-all duration-300 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 rounded-full p-2 hover:rotate-12"
+                style="filter: grayscale(100%);"
+                [style.filter]="reviewDialog.rating === 2 ? 'grayscale(0%) drop-shadow(0 0 10px rgba(251, 146, 60, 0.5))' : (reviewDialog.rating > 0 ? 'grayscale(70%)' : 'grayscale(100%)')">
+                😢
+              </button>
+
+              <!-- 3 Stars - Neutral -->
+              <button (click)="setRating(3)" [class.emoji-selected]="reviewDialog.rating === 3"
+                class="emoji-rating-btn text-5xl transition-all duration-300 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 rounded-full p-2 hover:rotate-12"
+                style="filter: grayscale(100%);"
+                [style.filter]="reviewDialog.rating === 3 ? 'grayscale(0%) drop-shadow(0 0 10px rgba(234, 179, 8, 0.5))' : (reviewDialog.rating > 0 ? 'grayscale(70%)' : 'grayscale(100%)')">
+                😐
+              </button>
+
+              <!-- 4 Stars - Happy -->
+              <button (click)="setRating(4)" [class.emoji-selected]="reviewDialog.rating === 4"
+                class="emoji-rating-btn text-5xl transition-all duration-300 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 rounded-full p-2 hover:rotate-12"
+                style="filter: grayscale(100%);"
+                [style.filter]="reviewDialog.rating === 4 ? 'grayscale(0%) drop-shadow(0 0 10px rgba(34, 197, 94, 0.5))' : (reviewDialog.rating > 0 ? 'grayscale(70%)' : 'grayscale(100%)')">
+                😊
+              </button>
+
+              <!-- 5 Stars - Love it -->
+              <button (click)="setRating(5)" [class.emoji-selected]="reviewDialog.rating === 5"
+                class="emoji-rating-btn text-5xl transition-all duration-300 hover:scale-125 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 rounded-full p-2 hover:rotate-12"
+                style="filter: grayscale(100%);"
+                [style.filter]="reviewDialog.rating === 5 ? 'grayscale(0%) drop-shadow(0 0 10px rgba(168, 85, 247, 0.5))' : (reviewDialog.rating > 0 ? 'grayscale(70%)' : 'grayscale(100%)')">
+                🤩
+              </button>
+            </div>
+          </div>
+
+          <!-- Rating labels -->
+          <div class="flex justify-between text-xs text-gray-500 dark:text-gray-400 mb-3 px-2">
+            <span>Poor</span>
+            <span>Excellent</span>
+          </div>
+
+          <!-- Feedback textarea (optional) -->
+          <div class="mb-3" *ngIf="reviewDialog.rating > 0">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Feedback (Optional)
+            </label>
+            <textarea [(ngModel)]="reviewDialog.feedback" placeholder="Tell me what you think..." rows="2"
+              class="w-full px-3 py-1.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none text-sm">
+</textarea>
+          </div>
+
+          <!-- Submit button -->
+          <button (click)="submitReview()" [disabled]="reviewDialog.rating === 0"
+            class="w-full py-2 px-3 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-purple-600 dark:to-purple-800 hover:from-blue-700 hover:to-blue-900 dark:hover:from-purple-700 dark:hover:to-purple-900 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium rounded-lg transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-0 text-sm">
+            <span *ngIf="reviewDialog.rating === 0">Please rate first</span>
+            <span *ngIf="reviewDialog.rating > 0">Submit Review</span>
+          </button>
+
+          <!-- Rating required message -->
+          <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
+            Rating is required to continue
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Review Dialog with Emoji Rating -->
+    <div *ngIf="reviewDialog.isVisible"
+      class="modal-overlay fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm mt-16">
+      <div
+        class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full relative transform transition-all duration-300 scale-100">
+        <!-- Close button (only enabled after rating) -->
+        <button *ngIf="canCloseDialog()" (click)="hideReviewDialog()"
+          class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+
+        <!-- Success state -->
+        <div *ngIf="reviewDialog.isSubmitted" class="text-center p-6">
+          <div class="mb-4">
+            <div
+              class="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
+              <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Thank You! <span
+                class="emoji-hover">🎉</span></h3>
+            <p class="text-gray-600 dark:text-gray-300">Your feedback helps me improve.</p>
+          </div>
+        </div>
+
+        <!-- Rating state -->
+        <div *ngIf="!reviewDialog.isSubmitted" class="p-4">
+          <div class="text-center mb-4">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">Rate Your Experience</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">How would you rate your visit to my portfolio?</p>
+          </div>
+
+          <!-- Name Input -->
+          <div class="mb-3">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Your Name <span class="text-red-500">*</span>
+            </label>
+            <input type="text" [(ngModel)]="reviewDialog.name" placeholder="Enter your name"
+              class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-sm"
+              required>
+          </div>
+
+          <!-- Emoji Rating -->
+          <div class="mb-3">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 text-center">
+              Rate Us <span class="text-red-500">*</span>
+            </label>
+            <div class="flex justify-center">
+              <div class="flex space-x-3">
+                <!-- 1 - Angry -->
+                <button (click)="setRating(1)" [class.emoji-selected]="reviewDialog.rating === 1"
+                  class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-2 relative group"
+                  [style.filter]="reviewDialog.rating === 1 ? 'grayscale(0%) drop-shadow(0 4px 15px rgba(239, 68, 68, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+                  😠
+                  <span class="tooltip">Terrible</span>
+                </button>
+
+                <!-- 2 - Disappointed -->
+                <button (click)="setRating(2)" [class.emoji-selected]="reviewDialog.rating === 2"
+                  class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-2 relative group"
+                  [style.filter]="reviewDialog.rating === 2 ? 'grayscale(0%) drop-shadow(0 4px 15px rgba(251, 146, 60, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+                  😕
+                  <span class="tooltip">Bad</span>
+                </button>
+
+                <!-- 3 - Neutral -->
+                <button (click)="setRating(3)" [class.emoji-selected]="reviewDialog.rating === 3"
+                  class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-2 relative group"
+                  [style.filter]="reviewDialog.rating === 3 ? 'grayscale(0%) drop-shadow(0 4px 15px rgba(234, 179, 8, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+                  😐
+                  <span class="tooltip">Okay</span>
+                </button>
+
+                <!-- 4 - Good -->
+                <button (click)="setRating(4)" [class.emoji-selected]="reviewDialog.rating === 4"
+                  class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-2 relative group"
+                  [style.filter]="reviewDialog.rating === 4 ? 'grayscale(0%) drop-shadow(0 4px 15px rgba(34, 197, 94, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+                  😄
+                  <span class="tooltip">Good</span>
+                </button>
+
+                <!-- 5 - Excellent -->
+                <button (click)="setRating(5)" [class.emoji-selected]="reviewDialog.rating === 5"
+                  class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-2 relative group"
+                  [style.filter]="reviewDialog.rating === 5 ? 'grayscale(0%) drop-shadow(0 4px 15px rgba(168, 85, 247, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+                  😍
+                  <span class="tooltip">Excellent</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feedback textarea (optional) -->
+          <div class="mb-3">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Message (Optional)
+            </label>
+            <textarea [(ngModel)]="reviewDialog.feedback" placeholder="Share your thoughts..." rows="3"
+              class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none transition-all">
+</textarea>
+          </div>
+
+          <!-- Submit button -->
+          <button (click)="submitReview()"
+            [disabled]="reviewDialog.rating === 0 || !reviewDialog.name || reviewDialog.name.trim() === ''"
+            class="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-blue-800 dark:from-purple-600 dark:to-purple-800 hover:from-blue-700 hover:to-blue-900 dark:hover:from-purple-700 dark:hover:to-purple-900 disabled:from-gray-400 disabled:to-gray-500 text-white font-medium rounded-lg transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-purple-500 focus:ring-offset-2 dark:focus:ring-offset-0 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95">
+            <span *ngIf="reviewDialog.rating === 0 || !reviewDialog.name || reviewDialog.name.trim() === ''">Complete
+              Required Fields</span>
+            <span *ngIf="reviewDialog.rating > 0 && reviewDialog.name && reviewDialog.name.trim() !== ''">Submit Review
+              <span class="emoji-hover">🚀</span></span>
+          </button>
+
+          <!-- Required fields message -->
+          <p class="text-xs text-gray-500 dark:text-gray-400 text-center mt-3">
+            <span class="text-red-500">*</span> Name and Rating are required
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

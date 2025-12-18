@@ -1,10 +1,18 @@
 /* Experience component styles */
-.shadow-sm {
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-.dark .shadow-sm {
-  box-shadow: 0 1px 2px 0 rgb(255 255 255 / 0.05);
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgb(255 255 255 / 0.05), 0 4px 6px -4px rgb(255 255 255 / 0.05);
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgb(255 255 255 / 0.05), 0 8px 10px -6px rgb(255 255 255 / 0.05);
 }
 
 /* Timeline animations */
@@ -23,19 +31,33 @@ article {
   }
 }
 
+/* Card hover effect */
+.group:hover {
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
 /* Gradient background */
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+
 /* Typewriter cursor effect */
 .typewriter-cursor {
   animation: blink 1s infinite;
-  color: #374151; /* Gray-700 for light theme */
+  color: #374151;
 }
 
 .dark .typewriter-cursor {
-  color: #f9fafb; /* Gray-50 for dark theme */
+  color: #f9fafb;
 }
 
 @keyframes blink {
@@ -45,4 +67,58 @@ article {
   51%, 100% {
     opacity: 0;
   }
+}
+
+/* Pulse animation for current role badge */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Timeline line styling */
+.absolute.left-5 {
+  left: 1.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .ml-10 {
+    margin-left: 2.5rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .ml-14 {
+    margin-left: 3.5rem;
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Card border styling */
+.border-gray-200\/50 {
+  border-color: rgb(229 231 235 / 0.5);
+}
+
+.dark .border-gray-700\/50 {
+  border-color: rgb(55 65 81 / 0.5);
+}
+
+/* Technology tags hover effect */
+.flex-wrap span:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
 }

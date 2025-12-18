@@ -8,6 +8,7 @@ interface Project {
   technologies: string[];
   highlights: string[];
   status: 'completed' | 'in-progress' | 'planned';
+  tag:'Personal' | 'Team'|'Internship';
   featured: boolean;
   links?: {
     github?: string;
@@ -90,73 +91,139 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       this.typewriteText();
     }, this.isErasing ? 100 : 150); // Faster erasing, slower typing
   }
-  projects: Project[] = [
+projects: Project[] = [
     {
-      id: 'chessdict',
+      id: 'Chessdict',
       title: 'ChessDict',
-      subtitle: 'Realtime Chess Online',
-      description: 'Web-based chess application with clean UI and smooth gameplay experience.',
-      longDescription: 'A comprehensive chess platform featuring real-time gameplay, intuitive user interface, and plans for advanced features like multiplayer integration, user authentication, and rating systems.',
+      subtitle: 'Real-Time Online Chess',
+      description: 'Web-based chess application featuring intuitive design and seamless gameplay.',
+      longDescription: 'A comprehensive chess platform delivering real-time gameplay with an intuitive interface. Roadmap includes multiplayer integration, user authentication, and competitive rating systems.',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'Node.js', 'Express.js'],
       highlights: [
-        'Clean and intuitive user interface design',
-        'Smooth gameplay experience with responsive controls',
-        'Planned multiplayer integration using Socket.io',
-        'User authentication and rating system on roadmap',
-        'Fast transaction processing for game moves',
-        'Mobile-responsive design for cross-device play'
-      ],
-      status: 'in-progress',
-      featured: true,
-      links: {
-        github: 'https://github.com/sanket-uphade077'
-      }
-    },
-    {
-      id: 'smart-traffic',
-      title: 'Smart Traffic Management System',
-      subtitle: 'AI-Powered Traffic Control',
-      description: 'AI-based real-time vehicle detection and density monitoring system using YOLO algorithm.',
-      longDescription: 'An innovative traffic management solution that uses computer vision and machine learning to detect vehicles in real-time, monitor traffic density, and automatically control traffic signals for optimal flow.',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Python', 'OpenCV', 'YOLO', 'Machine Learning'],
-      highlights: [
-        'Led a 5-member team as Project Leader',
-        'Real-time vehicle detection using YOLO algorithm',
-        'Traffic density analytics and monitoring',
-        'Automated signal control based on traffic patterns',
-        'Selected for Smart India Hackathon (SIH)',
-        'Recognized for innovation and deployment potential',
-        'Computer vision integration with OpenCV',
-        'Scalable architecture for multiple intersections'
+        'Intuitive user interface with clean design',
+        'Responsive controls for seamless gameplay',
+        'Planned Socket.io multiplayer integration',
+        'User authentication and rating system in development',
+        'Optimized move processing for real-time performance'
       ],
       status: 'completed',
       featured: true,
+      tag: 'Personal',
       links: {
-        github: 'https://github.com/sanket-uphade077'
+        github: 'https://github.com/Sanket77u/chessDict.git',
+        demo: 'https://chessdict.onrender.com/'
       }
     },
     {
-      id: 'motivator-cli',
-      title: 'motivator-cli',
-      subtitle: 'Command Line Motivation Tool',
-      description: 'Open-source CLI tool for daily motivation and productivity, published on NPM.',
-      longDescription: 'A lightweight command-line interface tool that provides daily motivational quotes and productivity tips. Built with Node.js and published as an NPM package.',
+      id: 'Smart Traffic',
+      title: 'Smart Traffic Management System',
+      subtitle: 'AI-Powered Traffic Control',
+      description: 'AI-driven vehicle detection and traffic density monitoring system powered by YOLO.',
+      longDescription: 'An intelligent traffic management solution leveraging computer vision and machine learning for real-time vehicle detection, density monitoring, and automated signal optimization.',
+      technologies: ['HTML5', 'CSS3', 'JavaScript', 'Python', 'OpenCV', 'YOLO', 'Machine Learning'],
+      highlights: [
+        'Led 4-member team as Project Leader',
+        'Real-time vehicle detection using YOLO algorithm',
+        'Automated signal control based on traffic density',
+        'Selected for Smart India Hackathon (SIH)',
+        'Recognized for innovation and deployment potential',
+        'Computer vision integration with OpenCV',
+        'Scalable architecture supporting multiple intersections'
+      ],
+      status: 'completed',
+      tag: 'Team',
+      featured: true,
+      links: {
+        github: 'https://github.com/PranavHGI/Traffic-Light-Control-Management-System-.git'
+      }
+    },
+    {
+      id: 'Motivator-cli',
+      title: 'Motivator-cli',
+      subtitle: 'Command-Line Motivation Tool',
+      description: 'Lightweight CLI tool delivering daily motivation and productivity insights via NPM.',
+      longDescription: 'A command-line interface tool providing daily motivational quotes and productivity tips. Published as an open-source NPM package with cross-platform support.',
       technologies: ['Node.js', 'JavaScript', 'NPM', 'CLI Development'],
       highlights: [
-        'Published as NPM package with 300+ downloads in first month',
-        'Simple and intuitive command-line interface',
+        'Published on NPM with 300+ downloads in first month',
+        'Fast execution with minimal overhead',
         'Daily motivational content delivery',
-        'Lightweight and fast execution',
         'Cross-platform compatibility',
         'Open-source contribution to developer community'
       ],
       status: 'completed',
+      tag: 'Personal',
       featured: false,
       links: {
-        github: 'https://github.com/sanket-uphade077'
+        github: 'https://github.com/Sanket77u/motivator-cli.git'
+      }
+    },
+    {
+      id: 'Ticket Khidakee',
+      title: 'Ticket Khidakee',
+      subtitle: 'Event Ticketing Platform',
+      description: 'Digital ticketing solution streamlining event management and ticket distribution.',
+      longDescription: 'A comprehensive event ticketing platform designed to simplify ticket booking, distribution, and event management processes for organizers and attendees.',
+      technologies: ['Node.js', 'JavaScript', 'Express.js', 'MongoDB'],
+      highlights: [
+        'Streamlined ticket booking workflow',
+        'Real-time availability tracking',
+        'Secure payment integration',
+        'Event management dashboard',
+        'QR code-based ticket verification',
+        'Developed during professional internship'
+      ],
+      status: 'completed',
+      tag: 'Internship',
+      featured: false,
+    },
+    {
+      id: 'Pockit',
+      title: 'Pockit',
+      subtitle: 'Electronics E-Commerce Platform',
+      description: 'Full-stack e-commerce platform connecting customers with electronic devices and repair services.',
+      longDescription: 'A comprehensive service provider platform enabling customers to purchase electronic devices and book repair services. Features include an admin panel for inventory management, order processing, and service provider coordination.',
+      technologies: ['Angular', 'Node.js', 'Express.js', 'MongoDB', 'TypeScript', 'Ant Design'],
+      highlights: [
+        'Complete admin panel for inventory and order management',
+        'Customer-facing website for product browsing and purchases',
+        'Service booking system for electronic repairs',
+        'Full-stack development with Angular and Node.js',
+        'Secure payment gateway integration',
+        'Real-time order tracking and status updates',
+        'RESTful API architecture for scalability'
+      ],
+      status: 'completed',
+      tag: 'Internship',
+      featured: true,
+    },
+    {
+      id: 'Ojasvi',
+      title: 'Ojasvi',
+      subtitle: 'Ayurvedic Products E-Commerce',
+      description: 'E-commerce platform specializing in authentic ayurvedic products with comprehensive admin management.',
+      longDescription: 'A specialized e-commerce solution for ayurvedic and herbal products, featuring product categorization, detailed descriptions, and an admin panel for inventory and order management. Built to promote traditional wellness through modern technology.',
+      technologies: ['Angular', 'Node.js', 'Express.js', 'MongoDB', 'TypeScript', 'Ant Design'],
+      highlights: [
+        'Product categorization for ayurvedic medicines and wellness items',
+        'Detailed product information with ingredients and benefits',
+        'Admin panel for inventory and order management',
+        'Shopping cart and secure checkout process',
+        'Order tracking and customer notification system',
+        'Responsive UI optimized for all devices',
+        'Product review and rating system'
+      ],
+      status: 'completed',
+      tag: 'Internship',
+      featured: true,
+      links: {
+        github: '',
+        demo: ''
       }
     }
   ];
+ 
+
 
   get featuredProjects(): Project[] {
     return this.projects.filter(p => p.featured);

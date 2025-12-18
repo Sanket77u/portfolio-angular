@@ -17,9 +17,6 @@ export class AboutComponent implements OnInit, OnDestroy {
   // Phrases for cycling effect
   private readonly phrases = [
     'About Me',
-    'My Story',
-    'Who I Am',
-    'My Journey'
   ];
 
   ngOnInit(): void {

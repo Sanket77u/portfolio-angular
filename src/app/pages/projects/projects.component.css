@@ -10,6 +10,7 @@
 /* Project card animations */
 article {
   animation: fadeInUp 0.6s ease-out;
+  min-height: 360px;
 }
 
 @keyframes fadeInUp {
@@ -42,16 +43,17 @@ article {
 /* Link hover effects */
 a:hover svg {
   transform: scale(1.1);
+  transition: transform 0.2s ease;
 }
 
 /* Typewriter cursor effect */
 .typewriter-cursor {
   animation: blink 1s infinite;
-  color: #374151; /* Gray-700 for light theme */
+  color: #374151;
 }
 
 .dark .typewriter-cursor {
-  color: #f9fafb; /* Gray-50 for dark theme */
+  color: #f9fafb;
 }
 
 @keyframes blink {
@@ -60,5 +62,54 @@ a:hover svg {
   }
   51%, 100% {
     opacity: 0;
+  }
+}
+
+/* Compact card styling */
+article {
+  display: flex;
+  flex-direction: column;
+}
+
+article .p-6 {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Ensure consistent card heights */
+@media (min-width: 1024px) {
+  .grid.lg\:grid-cols-3 > article {
+    height: 100%;
+  }
+}
+
+/* Hover effect for cards */
+article:hover {
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+/* Technology tags styling */
+.flex-wrap span {
+  white-space: nowrap;
+}
+
+/* Key features list styling */
+ul li {
+  line-height: 1.4;
+}
+
+/* Footer buttons */
+footer a {
+  flex: 1;
+  justify-content: center;
+  max-width: fit-content;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  article {
+    min-height: auto;
   }
 }

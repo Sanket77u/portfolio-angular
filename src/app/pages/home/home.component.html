@@ -1,10 +1,6 @@
-<section class="relative overflow-hidden min-h-screen flex items-center py-20 px-4 md:px-8">
+<section id="home" class="relative overflow-hidden min-h-screen flex items-center py-20 px-4 md:px-8">
   <!-- 3D Background Canvas -->
-  <canvas
-    id="bgCanvas"
-    #bgCanvas
-    class="absolute top-0 left-0 w-full h-full -z-10"
-  > </canvas>
+  <canvas id="bgCanvas" #bgCanvas class="absolute top-0 left-0 w-full h-full -z-10"></canvas>
 
   <div class="max-w-7xl mx-auto w-full">
     <!-- Hero Content -->
@@ -13,7 +9,7 @@
       <div class="relative z-10 space-y-8">
         <div class="space-y-6">
           <div class="space-y-2">
-            <p class="text-sm uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold">
+            <p class="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold">
               Welcome to my portfolio
             </p>
             <h1 class="text-2xl sm:text-4xl lg:text-2xl font-bold tracking-tight leading-[1.1]">
@@ -22,8 +18,8 @@
               </span>
             </h1>
           </div>
-          
-          <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+
+          <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
             Enthusiastic Computer Science undergrad (CSE'26) with strong foundations
             in Data Structures, Algorithms, and OOP. Building efficient, scalable
             web applications with modern technologies.
@@ -31,178 +27,442 @@
         </div>
 
         <div class="flex flex-wrap gap-4">
-          <a
-            routerLink="/projects"
-            class="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
+          <a routerLink="/projects"
+            class="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
             View Projects
-            <svg
-              class="w-5 h-5 group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
-          <a
-            routerLink="/contact"
-            class="inline-flex items-center gap-3 px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300"
-          >
+          <a routerLink="/contact"
+            class="inline-flex items-center gap-3 px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300">
             Get in Touch
           </a>
         </div>
 
         <div class="pt-6 space-y-4">
-          <p class="text-sm uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
+          <p class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold">
             Tech Stack
           </p>
           <div class="flex flex-wrap gap-3">
-            <span
-              *ngFor="let skill of skills"
-              class="px-4 py-2 text-sm font-medium rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-md transition-all duration-200"
-            >
+            <span *ngFor="let skill of skills"
+              class="px-4 py-2 text-sm font-medium rounded-lg bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-md transition-all duration-200">
               {{ skill }}
             </span>
           </div>
         </div>
       </div>
 
-      <!-- Right Column: Info Cards -->
+      <!-- Right Column: Compact Info Cards -->
       <div class="relative z-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div
-            class="group p-8 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Card 1: Education -->
+          <div class="info-card group">
+            <div class="card-glow"></div>
+            <div class="card-icon icon-blue">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
-            <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 font-semibold">
-              Education
-            </div>
-            <div class="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
-              B.Tech, Computer Engineering
-            </div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">
-              Rajarambapu Institute of Technology
-            </div>
-            <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              2022–2026 • GPA 7.80
-            </div>
+            <div class="card-label">Education</div>
+            <div class="card-title">B.Tech, Computer Engineering</div>
+            <div class="card-subtitle">Rajarambapu Institute of Technology</div>
+            <div class="card-meta">2022–2026 • GPA 7.80</div>
           </div>
 
-          <div
-            class="group p-8 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          <!-- Card 2: Current Role -->
+          <div class="info-card group">
+            <div class="card-glow"></div>
+            <div class="card-icon icon-green">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 font-semibold">
-              Current Role
-            </div>
-            <div class="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
-              Software Developer Intern
-            </div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">
-              GTT Data Solutions
-            </div>
-            <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              June 2025 – Present
-            </div>
+            <div class="card-label">Current Role</div>
+            <div class="card-title">Software Developer Intern</div>
+            <div class="card-subtitle">GTT Data Solutions</div>
+            <div class="card-meta">June 2025 – Present</div>
           </div>
 
-          <div
-            class="group p-8 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          <!-- Card 3: Achievement -->
+          <div class="info-card group">
+            <div class="card-glow"></div>
+            <div class="card-icon icon-yellow">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
               </svg>
             </div>
-            <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 font-semibold">
-              Achievement
-            </div>
-            <div class="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
-              Top 15 Hackathon
-            </div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">
-              Among 5000+ students
-            </div>
-            <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              GTT Hackathon Winner
-            </div>
+            <div class="card-label">Achievement</div>
+            <div class="card-title">Top 15 Hackathon</div>
+            <div class="card-subtitle">Among 5000+ students</div>
+            <div class="card-meta">GTT Hackathon Winner</div>
           </div>
 
-          <div
-            class="group p-8 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-red-500 flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          <!-- Card 4: Open Source -->
+          <div class="info-card group">
+            <div class="card-glow"></div>
+            <div class="card-icon icon-pink">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
               </svg>
             </div>
-            <div class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 font-semibold">
-              Open Source
+            <div class="card-label">Open Source</div>
+            <div class="card-title">motivator-cli</div>
+            <div class="card-subtitle">300+ downloads</div>
+            <div class="card-meta">NPM Package</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Ratings Section - Compact -->
+    <div class="mt-8 relative z-10" *ngIf="!isLoadingRatings && ratings && ratings.length > 0">
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <p class="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold">
+            User Reviews ({{ totalRatings }})
+          </p>
+          <div class="flex items-center gap-1">
+             <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <span class="text-xl font-bold bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">
+              {{ averageRating }}
+            </span>
+           
+           
+          </div>
+        </div>
+        
+        <!-- <div class="flex items-center gap-2">
+          <button 
+            (click)="openAddReviewDialog()"
+            class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            Add Review
+          </button>
+          <button 
+            (click)="toggleReviewsDrawer()"
+            class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200">
+            See All Reviews
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div> -->
+   
+   
+   <div class="flex items-center gap-2 flex-shrink-0">
+  <button 
+    (click)="openAddReviewDialog()"
+    class="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md whitespace-nowrap">
+    <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+    </svg>
+    <span class="hidden sm:inline">Add Review</span>
+    <span class="sm:hidden">Add</span>
+  </button>
+  <button 
+    (click)="toggleReviewsDrawer()"
+    class="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200 whitespace-nowrap">
+    <span class="hidden sm:inline">See All</span>
+    <span class="sm:hidden">All</span>
+    <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</div>
+   
+      </div>
+
+      <!-- Compact Review Cards - First 2 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <div *ngFor="let rating of ratings.slice(0, 3)" 
+             class="compact-review-card group">
+          <div class="card-glow"></div>
+          
+          <!-- Stars Display -->
+          <div class="flex items-center gap-0.5 mb-2">
+            <svg *ngFor="let star of [1,2,3,4,5]" 
+                 class="w-3.5 h-3.5"
+                 [class.text-yellow-500]="star <= rating.rating"
+                 [class.text-gray-300]="star > rating.rating"
+                 [class.dark:text-gray-600]="star > rating.rating"
+                 fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          </div>
+
+          <!-- Rating Message -->
+          <p class="text-xs text-gray-700 dark:text-gray-300 leading-relaxed mb-2 line-clamp-2">
+            "{{ rating.rating_message }}"
+          </p>
+
+          <!-- User Info -->
+          <div class="flex items-center gap-2">
+            <div class="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-[10px]">
+              {{ rating.username.charAt(0).toUpperCase() }}
             </div>
-            <div class="font-bold text-lg text-gray-900 dark:text-gray-100 mb-2">
-              motivator-cli
-            </div>
-            <div class="text-sm text-gray-600 dark:text-gray-400">
-              300+ downloads
-            </div>
-            <div class="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              NPM Package
+            <div class="flex-1 min-w-0">
+              <p class="font-semibold text-xs text-gray-900 dark:text-white truncate">
+                {{ rating.username }}
+              </p>
+              <p class="text-[10px] text-gray-500 dark:text-gray-400">
+                {{ formatDate(rating.timestamp) }}
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Stats Section -->
-    <div class="mt-24">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div class="text-center p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-          <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-            7.80
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">
-            CGPA
+    <!-- Loading State -->
+    <div class="mt-8 text-center" *ngIf="isLoadingRatings">
+      <div class="inline-block w-6 h-6 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+      <p class="mt-2 text-xs text-gray-600 dark:text-gray-400">Loading reviews...</p>
+    </div>
+  </div>
+
+  <!-- Reviews Drawer -->
+  <div>
+    <!-- Backdrop -->
+    <div class="drawer-backdrop" 
+         (click)="toggleReviewsDrawer()" 
+         [class.visible]="isReviewsDrawerOpen"
+         *ngIf="isReviewsDrawerOpen"></div>
+    
+    <!-- Drawer Content -->
+    <div class="drawer-content" [class.open]="isReviewsDrawerOpen">
+      <!-- Header -->
+      <div class="drawer-header">
+        <div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white">All Reviews</h3>
+          <div class="flex items-center gap-2 mt-1.5">
+            <span class="text-2xl font-bold bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">
+              {{ averageRating }}
+            </span>
+      
+
+       <svg class="w-5 h-5 text-yellow-500 align-middle"  fill="currentColor" viewBox="0 0 20 20"> 
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <span class="text-xs text-gray-600 dark:text-gray-400">
+              ({{ totalRatings }} {{ totalRatings === 1 ? 'review' : 'reviews' }})
+            </span>
           </div>
         </div>
-        <div class="text-center p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-          <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-            50+
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">
-            Problems Solved
-          </div>
-        </div>
-        <div class="text-center p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-          <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-            300+
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">
-            CLI Downloads
-          </div>
-        </div>
-        <div class="text-center p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
-          <div class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-            Top 15
-          </div>
-          <div class="text-sm text-gray-600 dark:text-gray-400 font-medium">
-            Hackathon Rank
+        <button 
+          (click)="toggleReviewsDrawer()"
+          class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+          <svg class="w-6 h-7 text-gray-600 dark:text-gray-400 mt-15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Reviews List -->
+      <div class="drawer-body">
+        <div class="space-y-3">
+          <div *ngFor="let rating of ratings; let i = index" class="drawer-review-card">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                  {{ rating.username.charAt(0).toUpperCase() }}
+                </div>
+                <div>
+                  <p class="font-semibold text-sm text-black dark:text-purple-600">
+                    {{ rating.username }}
+                  </p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">
+                    {{ formatDate(rating.timestamp) }}
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-1">
+                <span class="text-base font-bold text-gray-900 dark:text-purple-600">
+                  {{ rating.rating }}.0
+                </span>
+                <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Stars -->
+            <div class="flex items-center gap-0.5 mb-2">
+              <svg *ngFor="let star of [1,2,3,4,5]" 
+                   class="w-4 h-4"
+                   [class.text-yellow-500]="star <= rating.rating"
+                   [class.text-gray-300]="star > rating.rating"
+                   [class.dark:text-gray-600]="star > rating.rating"
+                   fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            </div>
+
+            <!-- Message -->
+            <p class="text-sm text-gray-700 dark:text-purple-600 leading-relaxed">
+              "{{ rating.rating_message }}"
+            </p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Add Review Dialog - Add this to home.component.html after the drawer -->
+<!-- Add Review Dialog - Add this to home.component.html after the drawer -->
+<div *ngIf="isAddReviewDialogOpen"
+  class="fixed inset-0 z-[1002] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+  <div
+    class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl max-w-sm w-full relative transform transition-all duration-300 scale-100">
+    
+    <!-- Close button -->
+    <button (click)="closeAddReviewDialog()"
+      class="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors z-10">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+    <!-- Success state -->
+    <div *ngIf="reviewDialog.isSubmitted" class="text-center p-6">
+      <div class="mb-3">
+        <div
+          class="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3 animate-bounce">
+          <svg class="w-7 h-7 text-green-600 dark:text-green-400" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">Thank You! 🎉</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-300">Your feedback has been submitted.</p>
+      </div>
+    </div>
+
+    <!-- Rating form -->
+    <div *ngIf="!reviewDialog.isSubmitted" class="p-5">
+      <div class="text-center mb-4">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">Rate Your Experience</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-xs">Share your thoughts about the portfolio</p>
+      </div>
+
+      <!-- Name Input -->
+      <div class="mb-3">
+        <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+          Your Name <span class="text-red-500">*</span>
+        </label>
+        <input type="text" [(ngModel)]="reviewDialog.name" placeholder="Enter your name"
+          class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+          required>
+      </div>
+
+      <!-- Emoji Rating -->
+      <div class="mb-3">
+        <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2 text-center">
+          Rate Us <span class="text-red-500">*</span>
+        </label>
+        <div class="flex justify-center mb-1">
+          <div class="flex space-x-1.5">
+            <!-- 1 - Angry -->
+            <button (click)="setRating(1)" type="button"
+              class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-1.5 relative group hover:scale-110"
+              [style.filter]="reviewDialog.rating === 1 ? 'grayscale(0%) drop-shadow(0 3px 10px rgba(239, 68, 68, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+              😠
+              <span class="review-tooltip">Terrible</span>
+            </button>
+
+            <!-- 2 - Disappointed -->
+            <button (click)="setRating(2)" type="button"
+              class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-1.5 relative group hover:scale-110"
+              [style.filter]="reviewDialog.rating === 2 ? 'grayscale(0%) drop-shadow(0 3px 10px rgba(251, 146, 60, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+              😕
+              <span class="review-tooltip">Bad</span>
+            </button>
+
+            <!-- 3 - Neutral -->
+            <button (click)="setRating(3)" type="button"
+              class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-1.5 relative group hover:scale-110"
+              [style.filter]="reviewDialog.rating === 3 ? 'grayscale(0%) drop-shadow(0 3px 10px rgba(234, 179, 8, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+              😐
+              <span class="review-tooltip">Okay</span>
+            </button>
+
+            <!-- 4 - Good -->
+            <button (click)="setRating(4)" type="button"
+              class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-1.5 relative group hover:scale-110"
+              [style.filter]="reviewDialog.rating === 4 ? 'grayscale(0%) drop-shadow(0 3px 10px rgba(34, 197, 94, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+              😄
+              <span class="review-tooltip">Good</span>
+            </button>
+
+            <!-- 5 - Excellent -->
+            <button (click)="setRating(5)" type="button"
+              class="emoji-rating-btn text-3xl transition-all duration-300 focus:outline-none rounded-full p-1.5 relative group hover:scale-110"
+              [style.filter]="reviewDialog.rating === 5 ? 'grayscale(0%) drop-shadow(0 3px 10px rgba(168, 85, 247, 0.6))' : (reviewDialog.rating > 0 ? 'grayscale(80%) opacity(0.5)' : 'grayscale(50%)')">
+              😍
+              <span class="review-tooltip">Excellent</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback textarea -->
+      <div class="mb-4">
+        <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+          Message (Optional)
+        </label>
+        <textarea [(ngModel)]="reviewDialog.feedback" placeholder="Share your thoughts..." rows="2"
+          class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none transition-all">
+</textarea>
+      </div>
+
+      <!-- Submit button -->
+      <button (click)="submitReview()"
+        [disabled]="reviewDialog.rating === 0 || !reviewDialog.name || reviewDialog.name.trim() === ''"
+        class="w-full py-2.5 px-4 text-sm bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold rounded-lg transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95">
+        <span *ngIf="reviewDialog.rating === 0 || !reviewDialog.name || reviewDialog.name.trim() === ''">Complete
+          Required Fields</span>
+        <span *ngIf="reviewDialog.rating > 0 && reviewDialog.name && reviewDialog.name.trim() !== ''">Submit Review
+          🚀</span>
+      </button>
+
+      <!-- Required fields message -->
+      <p class="text-[10px] text-gray-500 dark:text-gray-400 text-center mt-2">
+        <span class="text-red-500">*</span> Name and Rating are required
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="about" class="min-h-screen py-20">
+  <app-about></app-about>
+</section>
+
+<section id="experience" class="min-h-screen py-20">
+  <app-experience></app-experience>
+</section>
+
+<section id="skills" class="min-h-screen py-20">
+  <app-skills></app-skills>
+</section>
+
+<section id="projects" class="min-h-screen py-20">
+  <app-projects></app-projects>
+</section>
+
+<section id="achievements" class="min-h-screen py-20">
+  <app-achievements></app-achievements>
+</section>
+
+<section id="contact" class="min-h-screen py-20">
+  <app-contact></app-contact>
 </section>

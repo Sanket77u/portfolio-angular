@@ -169,4 +169,10 @@ export class ExperienceComponent implements OnInit, OnDestroy {
       this.typewriteText();
     }, this.isErasing ? 100 : 150); // Faster erasing, slower typing
   }
+
+
+
+
+
+  
 }

@@ -1,20 +1,19 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, Input } from '@angular/core';
 import * as THREE from "three";
+import { BackendService } from '../../service/backend.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
+  constructor(private backendService: BackendService) { }
 
+  @Input() page: string = 'home';
 
-
-
-
-
-
+  // Three.js properties
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
   private renderer!: THREE.WebGLRenderer;
@@ -45,9 +44,26 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   private roleIndex: number = 0;
   private roleInterval: any;
 
+  // Rating-related properties
+  ratings: any[] = [];
+  averageRating: number = 0;
+  totalRatings: number = 0;
+  isLoadingRatings: boolean = false;
+  isReviewsDrawerOpen: boolean = false;
+  isAddReviewDialogOpen: boolean = false;
+
+  // Review dialog properties
+  reviewDialog = {
+    rating: 0,
+    name: '',
+    feedback: '',
+    isSubmitted: false
+  };
+
   ngOnInit(): void {
     // Start role animation after component loads
     this.startRoleAnimation();
+    this.loadRatings();
   }
 
   ngAfterViewInit(): void {
@@ -55,7 +71,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    // Clean up interval when component is destroyed
+    // Clean up role interval when component is destroyed
     if (this.roleInterval) {
       clearInterval(this.roleInterval);
     }
@@ -76,6 +92,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       this.scene.clear();
     }
   }
+
+  // ============================================
+  // THREE.JS METHODS
+  // ============================================
 
   private initThreeJS(): void {
     // Get the canvas element
@@ -105,7 +125,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private createParticles(): void {
-    const particleCount = 6000; // Adjusted for larger stars - fewer needed for great visibility
+    const particleCount = 6000;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -117,8 +137,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       const i3 = i * 3;
 
       // Multi-layered distribution for better coverage
-      const layer = Math.floor(Math.random() * 3); // 3 layers
-      const radius = 5 + layer * 8 + Math.random() * 6; // 5-7, 13-19, 21-27
+      const layer = Math.floor(Math.random() * 3);
+      const radius = 5 + layer * 8 + Math.random() * 6;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
 
@@ -131,20 +151,17 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       let hue, saturation, lightness;
 
       if (colorType < 0.4) {
-        // Bright blue to purple (40%) - more vibrant
         hue = (Math.random() * 60 + 220) / 360;
         saturation = 0.8 + Math.random() * 0.2;
-        lightness = 0.7 + Math.random() * 0.3; // Increased brightness
+        lightness = 0.7 + Math.random() * 0.3;
       } else if (colorType < 0.7) {
-        // Bright white to light blue (30%) - very bright
         hue = (Math.random() * 30 + 200) / 360;
         saturation = 0.05 + Math.random() * 0.15;
-        lightness = 0.9 + Math.random() * 0.1; // Much brighter
+        lightness = 0.9 + Math.random() * 0.1;
       } else {
-        // Bright cyan to turquoise (30%)
         hue = (Math.random() * 40 + 180) / 360;
         saturation = 0.7 + Math.random() * 0.3;
-        lightness = 0.8 + Math.random() * 0.2; // Brighter
+        lightness = 0.8 + Math.random() * 0.2;
       }
 
       const color = new THREE.Color().setHSL(hue, saturation, lightness);
@@ -152,10 +169,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       colors[i3 + 1] = color.g;
       colors[i3 + 2] = color.b;
 
-      // Varied sizes for depth (larger, more attention-grabbing stars)
-      sizes[i] = 0.08 + Math.random() * 0.28; // 0.08 to 0.2
-
-      // Twinkle effect data
+      sizes[i] = 0.08 + Math.random() * 0.28;
       twinkles[i] = Math.random() * Math.PI * 2;
     }
 
@@ -164,7 +178,6 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
     geometry.setAttribute('twinkle', new THREE.BufferAttribute(twinkles, 1));
 
-    // Enhanced material with size attenuation
     const material = new THREE.ShaderMaterial({
       uniforms: {
         time: { value: 0.0 }
@@ -191,18 +204,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         uniform float time;
 
         void main() {
-          // Enhanced twinkle effect with more dramatic range
           float twinkleEffect = 0.4 + 0.6 * sin(time * 3.0 + vTwinkle);
-
-          // Add extra brightness for more attention-grabbing shine
           float brightness = 1.5 + 0.5 * sin(time * 4.0 + vTwinkle * 2.0);
 
-          // Create circular star shape with soft edges
           vec2 center = gl_PointCoord - vec2(0.5);
           float dist = length(center);
           float alpha = 1.0 - smoothstep(0.0, 0.5, dist);
 
-          // Combine all effects for stunning shine
           vec3 finalColor = vColor * twinkleEffect * brightness * alpha;
           gl_FragColor = vec4(finalColor, alpha * 0.9);
         }
@@ -213,29 +221,24 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       depthWrite: false
     });
 
-    // Create particle system
     this.particles = new THREE.Points(geometry, material);
     this.scene.add(this.particles);
 
-    // Create shooting stars
     this.createShootingStars();
   }
 
   private createShootingStars(): void {
-    // Create a few shooting stars
     for (let i = 0; i < 5; i++) {
       const geometry = new THREE.BufferGeometry();
-      const positions = new Float32Array(20 * 3); // Trail of 20 points
+      const positions = new Float32Array(20 * 3);
       const colors = new Float32Array(20 * 3);
 
-      // Initialize trail positions (will be updated in animation)
       for (let j = 0; j < 20; j++) {
         const j3 = j * 3;
         positions[j3] = 0;
         positions[j3 + 1] = 0;
         positions[j3 + 2] = 0;
 
-        // White to transparent gradient
         const alpha = 1 - (j / 20);
         colors[j3] = 1.0 * alpha;
         colors[j3 + 1] = 1.0 * alpha;
@@ -246,15 +249,15 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
       const material = new THREE.PointsMaterial({
-        size: 0.25, // Much larger for maximum attention-grabbing effect
+        size: 0.25,
         vertexColors: true,
         transparent: true,
-        opacity: 1.0, // Full opacity for maximum brightness
+        opacity: 1.0,
         blending: THREE.AdditiveBlending
       });
 
       const shootingStar = new THREE.Points(geometry, material);
-      shootingStar.visible = false; // Start invisible
+      shootingStar.visible = false;
       shootingStar.userData = {
         active: false,
         speed: 0,
@@ -271,24 +274,19 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private animate = (): void => {
     this.animationId = requestAnimationFrame(this.animate);
+    this.time += 0.016;
 
-    this.time += 0.016; // ~60fps
-
-    // Update particle system
     if (this.particles) {
-      // Gentle rotation
       this.particles.rotation.x += 0.0005;
       this.particles.rotation.y += 0.0008;
 
-      // Update shader uniforms for twinkling
       (this.particles.material as THREE.ShaderMaterial).uniforms['time'].value = this.time;
 
-      // Subtle wave motion (less frequent for performance)
-      if (Math.floor(this.time * 10) % 2 === 0) { // Every ~0.2 seconds
+      if (Math.floor(this.time * 10) % 2 === 0) {
         const positions = this.particles.geometry.attributes['position'].array as Float32Array;
         const waveStrength = 0.05;
 
-        for (let i = 0; i < positions.length; i += 9) { // Process every 3rd particle for performance
+        for (let i = 0; i < positions.length; i += 9) {
           const x = positions[i];
           const y = positions[i + 1];
           const z = positions[i + 2];
@@ -301,9 +299,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       }
     }
 
-    // Update shooting stars
     this.updateShootingStars();
-
     this.renderer.render(this.scene, this.camera);
   }
 
@@ -311,31 +307,27 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     this.shootingStars.forEach((shootingStar, index) => {
       const data = shootingStar.userData;
 
-      // Randomly activate shooting stars from left and right
-      if (!data['active'] && Math.random() < 0.001) { // ~0.1% chance per frame
+      if (!data['active'] && Math.random() < 0.001) {
         data['active'] = true;
-        data['speed'] = 0.15 + Math.random() * 0.40; // Faster speed
+        data['speed'] = 0.15 + Math.random() * 0.40;
         data['trailIndex'] = 0;
 
-        // Determine direction: left or right
-        const fromLeft = Math.random() < 0.5; // 50% chance for left or right
+        const fromLeft = Math.random() < 0.5;
 
         if (fromLeft) {
-          // Shooting star from left side (moving right)
           data['direction'] = 'left';
-          const startX = -35 + Math.random() * 5; // Start from left edge
-          const startY = (Math.random() - 0.5) * 20; // Random Y position
-          const startZ = (Math.random() - 0.5) * 15; // Random Z position
+          const startX = -35 + Math.random() * 5;
+          const startY = (Math.random() - 0.5) * 20;
+          const startZ = (Math.random() - 0.5) * 15;
           data['startPos'] = [startX, startY, startZ];
-          data['velocity'] = [data['speed'], (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.05]; // Move right with slight variation
+          data['velocity'] = [data['speed'], (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.05];
         } else {
-          // Shooting star from right side (moving left)
           data['direction'] = 'right';
-          const startX = 35 - Math.random() * 5; // Start from right edge
-          const startY = (Math.random() - 0.5) * 20; // Random Y position
-          const startZ = (Math.random() - 0.5) * 15; // Random Z position
+          const startX = 35 - Math.random() * 5;
+          const startY = (Math.random() - 0.5) * 20;
+          const startZ = (Math.random() - 0.5) * 15;
           data['startPos'] = [startX, startY, startZ];
-          data['velocity'] = [-data['speed'], (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.05]; // Move left with slight variation
+          data['velocity'] = [-data['speed'], (Math.random() - 0.5) * 0.1, (Math.random() - 0.5) * 0.05];
         }
 
         data['currentPos'] = [...data['startPos']];
@@ -343,37 +335,30 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       }
 
       if (data['active']) {
-        // Update position using velocity
         data['currentPos'][0] += data['velocity'][0];
         data['currentPos'][1] += data['velocity'][1];
         data['currentPos'][2] += data['velocity'][2];
 
-        // Update trail
         const positions = shootingStar.geometry.attributes['position'].array as Float32Array;
         const trailLength = 20;
 
-        // Shift trail positions
         for (let i = (trailLength - 1) * 3; i >= 3; i -= 3) {
           positions[i] = positions[i - 3];
           positions[i + 1] = positions[i - 2];
           positions[i + 2] = positions[i - 1];
         }
 
-        // Add new position at start of trail
         positions[0] = data['currentPos'][0];
         positions[1] = data['currentPos'][1];
         positions[2] = data['currentPos'][2];
 
         shootingStar.geometry.attributes['position'].needsUpdate = true;
 
-        // Deactivate when off screen (moved too far in their direction)
         let shouldDeactivate = false;
 
         if (data['direction'] === 'left') {
-          // Left-to-right stars: deactivate when they move too far right or are too far vertically
           shouldDeactivate = data['currentPos'][0] > 40 || Math.abs(data['currentPos'][1]) > 25;
         } else {
-          // Right-to-left stars: deactivate when they move too far left or are too far vertically
           shouldDeactivate = data['currentPos'][0] < -40 || Math.abs(data['currentPos'][1]) > 25;
         }
 
@@ -393,6 +378,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  // ============================================
+  // ROLE ANIMATION METHODS
+  // ============================================
+
   startRoleAnimation(): void {
     const roleElement = document.getElementById('role-text');
     if (!roleElement) return;
@@ -408,10 +397,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         } else {
           clearInterval(typeInterval);
           if (callback) {
-            setTimeout(callback, 2000); // Wait 2 seconds before erasing
+            setTimeout(callback, 2000);
           }
         }
-      }, 100); // Type each character every 100ms
+      }, 100);
     };
 
     const eraseRole = (callback?: () => void) => {
@@ -425,10 +414,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         } else {
           clearInterval(eraseInterval);
           if (callback) {
-            setTimeout(callback, 300); // Small pause before typing next role
+            setTimeout(callback, 300);
           }
         }
-      }, 50); // Erase faster than typing
+      }, 50);
     };
 
     const cycleRoles = () => {
@@ -438,9 +427,148 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       });
     };
 
-    // Start with first role
     typeRole(this.roles[this.roleIndex], () => {
       eraseRole(cycleRoles);
     });
+  }
+
+  // ============================================
+  // RATINGS METHODS
+  // ============================================
+
+  private loadRatings(): void {
+    this.isLoadingRatings = true;
+    this.backendService.getRatings().subscribe({
+      next: (data: any) => {
+        // Handle both direct array and object with ratings array
+        if (data && data.ratings && Array.isArray(data.ratings)) {
+          this.ratings = data.ratings;
+          this.averageRating = data.averageRating || 0;
+          this.totalRatings = data.totalRatings || data.ratings.length;
+        } else if (Array.isArray(data)) {
+          this.ratings = data;
+          this.calculateAverageRating();
+        } else {
+          this.ratings = [];
+        }
+        
+        this.isLoadingRatings = false;
+        console.log('Ratings loaded:', this.ratings.length, 'items');
+        console.log('Average rating:', this.averageRating);
+      },
+      error: (error) => {
+        console.error('Error fetching ratings:', error);
+        this.isLoadingRatings = false;
+        this.ratings = [];
+      }
+    });
+  }
+
+  // Calculate average rating if not provided by backend
+  private calculateAverageRating(): void {
+    if (this.ratings.length === 0) {
+      this.averageRating = 0;
+      this.totalRatings = 0;
+      return;
+    }
+
+    const sum = this.ratings.reduce((acc, rating) => acc + (rating.rating || 0), 0);
+    this.averageRating = Number((sum / this.ratings.length).toFixed(1));
+    this.totalRatings = this.ratings.length;
+  }
+
+  // Toggle reviews drawer
+  toggleReviewsDrawer(): void {
+    this.isReviewsDrawerOpen = !this.isReviewsDrawerOpen;
+    
+    // Prevent body scroll when drawer is open
+    if (this.isReviewsDrawerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Open add review dialog
+  openAddReviewDialog(): void {
+    this.isAddReviewDialogOpen = true;
+    this.reviewDialog = {
+      rating: 0,
+      name: '',
+      feedback: '',
+      isSubmitted: false
+    };
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Close add review dialog
+  closeAddReviewDialog(): void {
+    this.isAddReviewDialogOpen = false;
+    document.body.style.overflow = '';
+  }
+
+  // Set rating
+  setRating(rating: number): void {
+    this.reviewDialog.rating = rating;
+  }
+
+  // Submit review
+  submitReview(): void {
+    if (this.reviewDialog.rating === 0 || !this.reviewDialog.name || this.reviewDialog.name.trim() === '') {
+      return;
+    }
+
+    const reviewData = {
+      rating: this.reviewDialog.rating.toString(),
+      rating_message: this.reviewDialog.feedback.trim() || 'No message provided',
+      username: this.reviewDialog.name.trim()
+    };
+
+    this.backendService.submitRating(reviewData).subscribe({
+      next: (response) => {
+        console.log('Review submitted successfully:', response);
+        this.reviewDialog.isSubmitted = true;
+
+        // Reload ratings
+        this.loadRatings();
+
+        // Auto close after 2 seconds
+        setTimeout(() => {
+          this.closeAddReviewDialog();
+        }, 2000);
+      },
+      error: (error) => {
+        console.error('Error submitting review:', error);
+        alert('Failed to submit review. Please try again.');
+      }
+    });
+  }
+
+  // Format date for display
+  formatDate(timestamp: string): string {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const diffTime = Math.abs(now.getTime() - date.getTime());
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) {
+      return 'Today';
+    } else if (diffDays === 1) {
+      return 'Yesterday';
+    } else if (diffDays < 7) {
+      return `${diffDays} days ago`;
+    } else if (diffDays < 30) {
+      const weeks = Math.floor(diffDays / 7);
+      return `${weeks} ${weeks === 1 ? 'week' : 'weeks'} ago`;
+    } else if (diffDays < 365) {
+      const months = Math.floor(diffDays / 30);
+      return `${months} ${months === 1 ? 'month' : 'months'} ago`;
+    } else {
+      return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+      });
+    }
   }
 }
