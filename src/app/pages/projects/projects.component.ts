@@ -224,7 +224,6 @@ projects: Project[] = [
   ];
  
 
-
   get featuredProjects(): Project[] {
     return this.projects.filter(p => p.featured);
   }
